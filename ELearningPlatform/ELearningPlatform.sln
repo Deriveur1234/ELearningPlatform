@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ELearningPlatform", "ELearningPlatform.csproj", "{745E5BA7-0D67-4B27-B218-A15739EF53FF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ELearningPlatform", "ELearningPlatform.csproj", "{EB05AF36-1981-4169-A315-B6ECEE121F7A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{745E5BA7-0D67-4B27-B218-A15739EF53FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{745E5BA7-0D67-4B27-B218-A15739EF53FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{745E5BA7-0D67-4B27-B218-A15739EF53FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{745E5BA7-0D67-4B27-B218-A15739EF53FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB05AF36-1981-4169-A315-B6ECEE121F7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB05AF36-1981-4169-A315-B6ECEE121F7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB05AF36-1981-4169-A315-B6ECEE121F7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB05AF36-1981-4169-A315-B6ECEE121F7A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {470803F9-A084-49F4-B6AD-F57AD62AC3C2}
+		SolutionGuid = {808D7ED6-1F3A-4E52-947D-142245B9F953}
 	EndGlobalSection
 EndGlobal

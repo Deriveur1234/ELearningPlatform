@@ -2,14 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.ComponentModel.DataAnnotations;
 
 namespace ELearningPlatform.Models
 {
-    public class Token
+    public class Completed
     {
         public int Id { get; set; }
-        [DataType(DataType.DateTime)]
-        public DateTime ValidateTill { get; set; }
+        public int IdModule { get; set; }
+        public int IdUser { get; set; }
     }
 }

@@ -14,18 +14,21 @@ namespace ELearningPlatform.Data
         {
         }
 
-        public DbSet<ELearningPlatform.Models.User> User { get; set; }
-
         public DbSet<ELearningPlatform.Models.Course> Course { get; set; }
 
-        public DbSet<ELearningPlatform.Models.CompletedCourse> CompletedCourse { get; set; }
-
-        public DbSet<ELearningPlatform.Models.Role> Role { get; set; }
-
-        public DbSet<ELearningPlatform.Models.Participation> Participation { get; set; }
+        public DbSet<ELearningPlatform.Models.User> User { get; set; }
 
         public DbSet<ELearningPlatform.Models.Token> Token { get; set; }
+        public DbSet<ELearningPlatform.Models.Role> Role { get; set; }
 
-        public DbSet<ELearningPlatform.Models.PageCourse> PageCourse { get; set; }
+        public DbSet<ELearningPlatform.Models.Completed> Completed { get; set; }
+
+        public DbSet<ELearningPlatform.Models.Content> Content { get; set; }
+
+        public DbSet<ELearningPlatform.Models.Inscription> Inscription { get; set; }
+
+        public DbSet<ELearningPlatform.Models.Module> Module { get; set; }
+
+        public DbSet<ELearningPlatform.Models.Subject> Subject { get; set; }
     }
 }
