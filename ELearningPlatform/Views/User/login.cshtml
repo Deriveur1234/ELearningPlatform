@@ -1,0 +1,68 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>E-learning Platform</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Start your project here-->
+    <div style="height: 100vh;" class=" animated fadeIn">
+        <div class="flex-center flex-column">
+            <div class="auth-content">
+                <div class="logo mb-5">
+                    <img src="img/logo.png" class="img-fluid" alt="Application Logo">
+                </div>
+                <div class="card mb-2">
+                    <div class="card-body">
+                        <form>
+                            <div class="md-form">
+                                <input type="text" id="materialFormSubscriptionNameEx" class="form-control">
+                                <label for="materialFormSubscriptionNameEx">Username</label>
+                            </div>
+                            <div class="md-form">
+                                <input type="password" id="materialFormSubscriptionPasswordEx" class="form-control">
+                                <label for="materialFormSubscriptionPasswordEx">Password</label>
+                            </div>
+                            <a href="forgot-password.html" class="small-link">oops, I forgot my password</a>
+                        </form>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <a asp-controller="Account" asp-action="Login" class="btn btn-default btn-sm mb-3 btn-block">Login</a>
+                    <span class="small-link">Don't have an account?</span>
+                    <a href="signup.html" class="small-link">Sign up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /Start your project here-->
+    <!-- SCRIPTS -->
+    <!-- JQuery -->
+    <script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+</body>
+
+</html>

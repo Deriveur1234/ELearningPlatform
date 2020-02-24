@@ -17,26 +17,37 @@ namespace ELearningPlatform.Models
                     DbContextOptions<ELearningPlatformContext>>()))
             {
                 // Look for any tokens.
-                if (context.Role.Any())
+                if (!context.Role.Any())
                 {
-                    return;   // DB has been seeded
+                    context.Role.AddRange(
+                        new Role
+                        {
+                            Label = "Guest"
+                        },
+                        new Role
+                        {
+                            Label = "Student"
+                        },
+                        new Role
+                        {
+                            Label = "Instructor"
+                        }
+                    );
+                    context.SaveChanges();
                 }
-
-                context.Role.AddRange(
-                    new Role
-                    {
-                        Label = "Guest"
-                    },
-                    new Role
-                    {
-                        Label = "Student"
-                    },
-                    new Role
-                    {
-                        Label = "Instructor"
-                    }
-                );
-                context.SaveChanges();
+                if(!context.User.Any())
+                {
+                    context.User.AddRange(
+                        new User
+                        {
+                            Email = "ELearningDefaultUser@protonmail.com", //account specially created as default user
+                            IdCode = 3,
+                            IsConfirmed = true,
+                            Password = "a68181b5a222ee9db77baa62ce1e9f43e4fcf643"
+                        }
+                    );
+                    context.SaveChanges();
+                }
             }
         }
     }

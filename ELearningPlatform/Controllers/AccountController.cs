@@ -6,12 +6,13 @@ using Microsoft.AspNetCore.Mvc;
 using ELearningPlatform.Data;
 using ELearningPlatform.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace ELearningPlatform.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     [ApiController]
     public class AccountController : Controller
     {
@@ -21,6 +22,7 @@ namespace ELearningPlatform.Controllers
         {
             _context = context;
 
+            
             if (_context.User.Count() == 0)
             {
                 // Create a new User if collection is empty,
@@ -28,6 +30,15 @@ namespace ELearningPlatform.Controllers
                 _context.User.Add(new User { Email = "loicburnand@gmail.com", IsConfirmed = true, IdCode = 3 });
                 _context.SaveChanges();
             }
+            UsersData.GetAllUser(_context);
+        }
+
+        [HttpGet("{id=0}")]
+        public async Task<IActionResult> GetUser(int id)
+        {
+            UsersData.GetAllUser(_context);
+
+            return NoContent();
         }
 
         // PUT: api/Users/5
@@ -60,6 +71,13 @@ namespace ELearningPlatform.Controllers
             }
 
             return NoContent();
+        }
+
+        [Route("Login")]
+        [HttpPost("{Username}")]
+        public async Task<IActionResult> LoginUser(string Username, string Password)
+        {
+            return View("Index");
         }
 
         private bool UserExists(int id)

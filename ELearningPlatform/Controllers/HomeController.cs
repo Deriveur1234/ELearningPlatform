@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ELearningPlatform.Models;
+using ELearningPlatform.Data;
+using Microsoft.AspNetCore.Http;
 
 namespace ELearningPlatform.Controllers
 {
@@ -16,10 +18,14 @@ namespace ELearningPlatform.Controllers
         public HomeController(ILogger<HomeController> logger)
         {
             _logger = logger;
+            
         }
 
         public IActionResult Index()
         {
+            if (string.IsNullOrEmpty(HttpContext.Session.GetString(SessionKey.SessionKeyEmail)))
+                return View("login");
+
             return View();
         }
 

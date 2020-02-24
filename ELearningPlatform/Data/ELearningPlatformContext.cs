@@ -30,5 +30,7 @@ namespace ELearningPlatform.Data
         public DbSet<ELearningPlatform.Models.Module> Module { get; set; }
 
         public DbSet<ELearningPlatform.Models.Subject> Subject { get; set; }
+
+
     }
 }

@@ -307,7 +307,6 @@ C:\Users\lburnand\Documents\GitHub\ELearningPlatform\ELearningPlatform\bin\Debug
 C:\Users\lburnand\Documents\GitHub\ELearningPlatform\ELearningPlatform\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\lburnand\Documents\GitHub\ELearningPlatform\ELearningPlatform\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\lburnand\Documents\GitHub\ELearningPlatform\ELearningPlatform\obj\Debug\netcoreapp3.1\ELearningPlatform.csprojAssemblyReference.cache
-C:\Users\lburnand\Documents\GitHub\ELearningPlatform\ELearningPlatform\obj\Debug\netcoreapp3.1\ELearningPlatform.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\lburnand\Documents\GitHub\ELearningPlatform\ELearningPlatform\obj\Debug\netcoreapp3.1\ELearningPlatform.RazorAssemblyInfo.cache
 C:\Users\lburnand\Documents\GitHub\ELearningPlatform\ELearningPlatform\obj\Debug\netcoreapp3.1\ELearningPlatform.RazorAssemblyInfo.cs
 C:\Users\lburnand\Documents\GitHub\ELearningPlatform\ELearningPlatform\obj\Debug\netcoreapp3.1\ELearningPlatform.AssemblyInfoInputs.cache
@@ -330,3 +329,5 @@ C:\Users\lburnand\Documents\GitHub\ELearningPlatform\ELearningPlatform\obj\Debug
 C:\Users\lburnand\Documents\GitHub\ELearningPlatform\ELearningPlatform\obj\Debug\netcoreapp3.1\staticwebassets\ELearningPlatform.StaticWebAssets.xml
 C:\Users\lburnand\Documents\GitHub\ELearningPlatform\ELearningPlatform\obj\Debug\netcoreapp3.1\ELearningPlatform.dll
 C:\Users\lburnand\Documents\GitHub\ELearningPlatform\ELearningPlatform\obj\Debug\netcoreapp3.1\ELearningPlatform.pdb
+C:\Users\lburnand\Documents\GitHub\ELearningPlatform\ELearningPlatform\obj\Debug\netcoreapp3.1\Razor\Views\User\login.cshtml.g.cs
+C:\Users\lburnand\Documents\GitHub\ELearningPlatform\ELearningPlatform\obj\Debug\netcoreapp3.1\ELearningPlatform.MvcApplicationPartsAssemblyInfo.cache
