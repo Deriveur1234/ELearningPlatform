@@ -128,6 +128,7 @@ namespace ELearningPlatform.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     IdCode = table.Column<int>(nullable: false),
+                    Username = table.Column<string>(nullable: false),
                     Email = table.Column<string>(nullable: true),
                     IsConfirmed = table.Column<bool>(nullable: false),
                     Password = table.Column<string>(nullable: true)

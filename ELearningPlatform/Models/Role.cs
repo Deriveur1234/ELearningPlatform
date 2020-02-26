@@ -7,6 +7,9 @@ namespace ELearningPlatform.Models
 {
     public class Role
     {
+        public const int RoleGuest = 1;
+        public const int Roletudent = 2;
+        public const int RoleInstructor = 3;
         public int Id { get; set; }
         public string Label { get; set; }
     }

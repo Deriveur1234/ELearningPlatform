@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace ELearningPlatform.Controllers
 {
+    //This controller is use as a router
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -23,15 +24,24 @@ namespace ELearningPlatform.Controllers
 
         public IActionResult Index()
         {
-            if (string.IsNullOrEmpty(HttpContext.Session.GetString(SessionKey.SessionKeyEmail)))
-                return View("login");
-
+            if (SessionHelper.Get<User>(HttpContext.Session, SessionHelper.SessionKeyUser) != null)
+                TempData[TempDataHelper.TempdataKeyIsConnected] = true;
             return View();
         }
 
         public IActionResult Privacy()
         {
             return View();
+        }
+
+        public IActionResult Login()
+        {
+            return View("Login");
+        }
+
+        public IActionResult SignUp()
+        {
+            return View("SignUp");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

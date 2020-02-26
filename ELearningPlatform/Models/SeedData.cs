@@ -41,6 +41,7 @@ namespace ELearningPlatform.Models
                         new User
                         {
                             Email = "ELearningDefaultUser@protonmail.com", //account specially created as default user
+                            Username = "DefaultUser",
                             IdCode = 3,
                             IsConfirmed = true,
                             Password = "a68181b5a222ee9db77baa62ce1e9f43e4fcf643"
