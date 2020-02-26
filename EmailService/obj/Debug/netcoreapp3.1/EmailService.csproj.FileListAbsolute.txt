@@ -1,0 +1,8 @@
+C:\Users\lburnand\Documents\GitHub\ELearningPlatform\EmailService\bin\Debug\netcoreapp3.1\EmailService.deps.json
+C:\Users\lburnand\Documents\GitHub\ELearningPlatform\EmailService\bin\Debug\netcoreapp3.1\EmailService.dll
+C:\Users\lburnand\Documents\GitHub\ELearningPlatform\EmailService\obj\Debug\netcoreapp3.1\EmailService.csprojAssemblyReference.cache
+C:\Users\lburnand\Documents\GitHub\ELearningPlatform\EmailService\obj\Debug\netcoreapp3.1\EmailService.AssemblyInfoInputs.cache
+C:\Users\lburnand\Documents\GitHub\ELearningPlatform\EmailService\obj\Debug\netcoreapp3.1\EmailService.AssemblyInfo.cs
+C:\Users\lburnand\Documents\GitHub\ELearningPlatform\EmailService\bin\Debug\netcoreapp3.1\EmailService.pdb
+C:\Users\lburnand\Documents\GitHub\ELearningPlatform\EmailService\obj\Debug\netcoreapp3.1\EmailService.dll
+C:\Users\lburnand\Documents\GitHub\ELearningPlatform\EmailService\obj\Debug\netcoreapp3.1\EmailService.pdb

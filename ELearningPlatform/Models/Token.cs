@@ -11,5 +11,8 @@ namespace ELearningPlatform.Models
         public int Id { get; set; }
         [DataType(DataType.DateTime)]
         public DateTime ValidateTill { get; set; }
+        public string Code { get; set; }
+
+        
     }
 }

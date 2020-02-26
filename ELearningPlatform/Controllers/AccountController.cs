@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using System.Security.Cryptography;
 using Microsoft.AspNetCore.Http;
 using System.Text;
+using EmailService;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -22,12 +23,16 @@ namespace ELearningPlatform.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly ELearningPlatformContext _context;
         private UsersData usersData;
+        private EmailSender _emailSender;
+        private static Random r = new Random();
 
-        public AccountController(ILogger<HomeController> logger, ELearningPlatformContext context)
+        public AccountController(ILogger<HomeController> logger, ELearningPlatformContext context, EmailConfiguration emailConfiguration)
         {
             _logger = logger;
             _context = context;
             usersData = new UsersData(_context);
+            _emailSender = new EmailSender(emailConfiguration);
+            
             
             if (_context.User.Count() == 0)
             {
@@ -95,15 +100,16 @@ namespace ELearningPlatform.Controllers
                 if (!user.IsConfirmed)
                 {
                     TempData[TempDataHelper.TempdataKeyErrorMessage] = "Please check your email to confirm your account";
-                    return View("Index");
+                    return View("Login");
                 }
                 // dont want to stock the password in session even if hashed
                 user.Password = null;
                 // Put in session an serialized object User 
                 SessionHelper.Set<User>(HttpContext.Session, SessionHelper.SessionKeyUser, user);
                 TempData[TempDataHelper.TempdataKeyIsConnected] = true;
+                return View("Index");
             }
-            return View("Index");
+            return View("Login");
         }
 
         [Route("LogOut")]
@@ -135,19 +141,42 @@ namespace ELearningPlatform.Controllers
                 _context.User.Add(newUser);
                 _context.SaveChanges();
                 _context.Entry(newUser).GetDatabaseValues();
-                CreateToken(newUser.Id);
+                CreateToken(newUser);
             }
             return View("Index");
         }
 
-        private bool CreateToken(int IdUser)
+        [Route("Activate")]
+        [HttpGet]
+        public async Task<IActionResult> ActivateUser(string Code)
+        {
+            User user;
+            try
+            {
+                List<Token> token = _context.Token.Where(e => e.Code == Code).ToList();
+                if (token.Count > 0 && DateTime.Compare(token[0].ValidateTill, DateTime.Now) > 0)
+                {
+                    user = _context.User.Find(token[0].Id);
+                    user.IsConfirmed = true;
+                    _context.SaveChanges();
+                }
+            }catch
+            {
+                return View("Index");
+            }
+
+            return View("Login");
+        }
+
+        private void CreateToken(User User)
         {
             Token t = new Token();
-            t.Id = IdUser;
+            t.Id = User.Id;
             t.ValidateTill = DateTime.Now.AddDays(1f);
+            t.Code = GenerateCode();
             _context.Token.Add(t);
             _context.SaveChanges();
-            return false;
+            SendActivationMail(User.Email, t.Code);
         }
         private bool UserExists(int id)
         {
@@ -164,6 +193,13 @@ namespace ELearningPlatform.Controllers
             return _context.User.Any(e => e.Username == username);
         }
 
+        private bool SendActivationMail(string newUserEmail, string TokenCode)
+        {
+            var message = new Message(new string[] { newUserEmail }, "Account confirmation", "Use this link to activate your email : https://localhost:44351/Account/Activate?Code=" + TokenCode);
+            _emailSender.SendEmail(message);
+            return false;
+        }
+
         private static string GetSha1(string value)
         {
             var data = Encoding.ASCII.GetBytes(value);
@@ -174,6 +210,13 @@ namespace ELearningPlatform.Controllers
                 hash += b.ToString("X2");
             }
             return hash;
+        }
+
+        public static string GenerateCode(int length = 20)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[r.Next(s.Length)]).ToArray());
         }
     }
 }

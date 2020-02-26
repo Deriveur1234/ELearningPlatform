@@ -332,3 +332,8 @@ C:\Users\lburnand\Documents\GitHub\ELearningPlatform\ELearningPlatform\obj\Debug
 C:\Users\lburnand\Documents\GitHub\ELearningPlatform\ELearningPlatform\obj\Debug\netcoreapp3.1\Razor\Views\User\login.cshtml.g.cs
 C:\Users\lburnand\Documents\GitHub\ELearningPlatform\ELearningPlatform\obj\Debug\netcoreapp3.1\ELearningPlatform.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\lburnand\Documents\GitHub\ELearningPlatform\ELearningPlatform\obj\Debug\netcoreapp3.1\Razor\Views\User\SignUp.cshtml.g.cs
+C:\Users\lburnand\Documents\GitHub\ELearningPlatform\ELearningPlatform\bin\Debug\netcoreapp3.1\MailKit.dll
+C:\Users\lburnand\Documents\GitHub\ELearningPlatform\ELearningPlatform\bin\Debug\netcoreapp3.1\MimeKit.dll
+C:\Users\lburnand\Documents\GitHub\ELearningPlatform\ELearningPlatform\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+C:\Users\lburnand\Documents\GitHub\ELearningPlatform\ELearningPlatform\bin\Debug\netcoreapp3.1\EmailService.dll
+C:\Users\lburnand\Documents\GitHub\ELearningPlatform\ELearningPlatform\bin\Debug\netcoreapp3.1\EmailService.pdb

@@ -13,6 +13,7 @@ using ELearningPlatform.Data;
 using ELearningPlatform.Controllers;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Http;
+using EmailService;
 
 namespace ELearningPlatform
 {
@@ -45,6 +46,12 @@ namespace ELearningPlatform
 
             services.AddDbContext<ELearningPlatformContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("ELearningPlatformContext")));
+
+            var emailConfig = Configuration
+            .GetSection("EmailConfiguration")
+            .Get<EmailConfiguration>();
+
+            services.AddSingleton(emailConfig);
 
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
