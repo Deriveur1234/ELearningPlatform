@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>E-learning Platform</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap core CSS -->
+    <link href="~/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="~/css/mdb.min.css" rel="stylesheet">
+    <!-- Your custom styles (optional) -->
+    <link href="~/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Start your project here-->
+    <div style="height: 100vh;" class=" animated fadeIn">
+        <div class="flex-center flex-column">
+            <div class="auth-content">
+                <div class="logo mb-5">
+                    <a asp-controller="Home" asp-action="Index"><img src="~/img/logo.png" class="img-fluid" alt="Application Logo"></a>
+                </div>
+            </div>
+            @RenderBody()
+        </div>
+    </div>
+</body>
+</html>
