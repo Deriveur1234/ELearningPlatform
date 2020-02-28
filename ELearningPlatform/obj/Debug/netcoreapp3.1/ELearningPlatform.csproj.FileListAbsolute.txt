@@ -337,3 +337,5 @@ C:\Users\lburnand\Documents\GitHub\ELearningPlatform\ELearningPlatform\bin\Debug
 C:\Users\lburnand\Documents\GitHub\ELearningPlatform\ELearningPlatform\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
 C:\Users\lburnand\Documents\GitHub\ELearningPlatform\ELearningPlatform\bin\Debug\netcoreapp3.1\EmailService.dll
 C:\Users\lburnand\Documents\GitHub\ELearningPlatform\ELearningPlatform\bin\Debug\netcoreapp3.1\EmailService.pdb
+C:\Users\lburnand\Documents\GitHub\ELearningPlatform\ELearningPlatform\obj\Debug\netcoreapp3.1\Razor\Views\User\ForgotPassword.cshtml.g.cs
+C:\Users\lburnand\Documents\GitHub\ELearningPlatform\ELearningPlatform\obj\Debug\netcoreapp3.1\Razor\Views\User\ResetPassword.cshtml.g.cs

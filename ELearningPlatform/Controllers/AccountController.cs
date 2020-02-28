@@ -22,8 +22,8 @@ namespace ELearningPlatform.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ELearningPlatformContext _context;
-        private UsersData usersData;
-        private EmailSender _emailSender;
+        private readonly UsersData usersData;
+        private readonly EmailSender _emailSender;
         private static Random r = new Random();
 
         public AccountController(ILogger<HomeController> logger, ELearningPlatformContext context, EmailConfiguration emailConfiguration)
@@ -92,7 +92,6 @@ namespace ELearningPlatform.Controllers
                 return View("Login");
             User user = new User();
             user.Username = Username;
-            SHA1 sha1 = new SHA1CryptoServiceProvider();
             user.Password = GetSha1(Password);
             if(usersData.CheckLogin(user))
             {
@@ -141,7 +140,7 @@ namespace ELearningPlatform.Controllers
                 _context.User.Add(newUser);
                 _context.SaveChanges();
                 _context.Entry(newUser).GetDatabaseValues();
-                CreateToken(newUser);
+                SendActivationMail(newUser.Email, CreateToken(newUser).Code);
             }
             return View("Index");
         }
@@ -168,15 +167,68 @@ namespace ELearningPlatform.Controllers
             return View("Login");
         }
 
-        private void CreateToken(User User)
+        [Route("ForgotPassword")]
+        [HttpGet]
+        public async Task<IActionResult> ForgotPasswordUser(string Email)
+        {
+            if(Email != null)
+            {
+                List<User> user = _context.User.Where(e => e.Email == Email).ToList(); 
+                if(user.Count > 0)
+                {
+                    if(DeleteToken(user[0].Id))
+                    {
+                        Token token = CreateToken(user[0]);
+                        SendResetPasswordMail(user[0].Email, token.Code);
+                    }
+                }
+            }
+            return View("Login");
+        }
+
+        [Route("ResetPassword")]
+        [HttpGet]
+        public IActionResult ResetPasswordUser(string Id, string newPassword)
+        {
+            try
+            {
+                List<User> user = _context.User.Where(e => e.Id == Convert.ToInt32(Id)).ToList();
+                if(user.Count > 0)
+                {
+                    user[0].Password = GetSha1(newPassword);
+                    _context.SaveChanges();
+                }
+            }
+            catch
+            {
+                return View("ResetPassword");
+            }
+            return View("Login");
+        }
+
+
+        private Token CreateToken(User User)
         {
             Token t = new Token();
             t.Id = User.Id;
             t.ValidateTill = DateTime.Now.AddDays(1f);
             t.Code = GenerateCode();
             _context.Token.Add(t);
-            _context.SaveChanges();
-            SendActivationMail(User.Email, t.Code);
+            _context.SaveChangesAsync();
+            return t;
+        }
+
+        private bool DeleteToken(int IdUser)
+        {
+            try
+            {
+                _context.Token.Remove(_context.Token.Find(IdUser));
+                _context.SaveChanges();
+            }catch
+            {
+                return false;
+            }
+            return true;
         }
         private bool UserExists(int id)
         {
@@ -195,9 +247,30 @@ namespace ELearningPlatform.Controllers
 
         private bool SendActivationMail(string newUserEmail, string TokenCode)
         {
-            var message = new Message(new string[] { newUserEmail }, "Account confirmation", "Use this link to activate your email : https://localhost:44351/Account/Activate?Code=" + TokenCode);
-            _emailSender.SendEmail(message);
-            return false;
+            try
+            {
+                var message = new Message(new string[] { newUserEmail }, "Account confirmation", "Use this link to activate your email : https://localhost:44351/Account/Activate?Code=" + TokenCode);
+                _emailSender.SendEmail(message);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private bool SendResetPasswordMail(string email, string tokenCode)
+        {
+            try
+            {
+                var message = new Message(new string[] { email }, "Reset Password", "Use this link to reset your password : https://localhost:44351/Home/ResetPassword?Code=" + tokenCode);
+                _emailSender.SendEmail(message);
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
         }
 
         private static string GetSha1(string value)

@@ -9,5 +9,7 @@ namespace ELearningPlatform.Data
     {
         public const string TempdataKeyIsConnected = "_IsConnected";
         public const string TempdataKeyErrorMessage = "_ErrorMessage";
+        public const string TempdataKeyIdUser = "_IdUser";
+        public const string TempdataKeyTokenCode = "_TokenCode";
     }
 }

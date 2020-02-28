@@ -61,5 +61,10 @@ namespace ELearningPlatform.Data
             return (users.Count > 0);
         }
 
+        public int GetIdUserByTokenCode(string TokenCode)
+        {
+            return _context.User.Find(_context.Token.Where(e => e.Code == TokenCode).ToList()[0].Id).Id;
+        }
+
     }
 }
