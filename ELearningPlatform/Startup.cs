@@ -44,6 +44,7 @@ namespace ELearningPlatform
 
             services.AddMvc();
 
+
             services.AddDbContext<ELearningPlatformContext>(options =>
                     options.UseSqlServer(Configuration.GetConnectionString("ELearningPlatformContext")));
 
@@ -57,6 +58,7 @@ namespace ELearningPlatform
 
             services.AddScoped<Session>();
 
+
             services.Configure<RazorViewEngineOptions>(o =>
             {
                 o.ViewLocationFormats.Clear();
@@ -66,6 +68,8 @@ namespace ELearningPlatform
                 ("/Views/Shared/{0}" + RazorViewEngine.ViewExtension);
                 o.ViewLocationFormats.Add
                 ("/Views/User/{0}" + RazorViewEngine.ViewExtension);
+                o.ViewLocationFormats.Add
+                ("/Views/Courses/{0}" + RazorViewEngine.ViewExtension);
             });
 
         }
@@ -93,6 +97,13 @@ namespace ELearningPlatform
             app.UseRouting();
 
             app.UseAuthorization();
+            
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
 
             app.UseEndpoints(endpoints =>
             {

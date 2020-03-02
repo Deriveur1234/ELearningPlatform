@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using ELearningPlatform.Models;
 using ELearningPlatform.Data;
@@ -11,23 +12,22 @@ using Microsoft.AspNetCore.Http;
 
 namespace ELearningPlatform.Controllers
 {
-    //This controller is use as a router
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ELearningPlatformContext _context;
         private UsersData usersData;
+        private CoursesData coursesData;
 
-        public HomeController(ILogger<HomeController> logger, ELearningPlatformContext context)
+        public HomeController(ELearningPlatformContext context)
         {
-            _logger = logger;
-            usersData = new UsersData(context);
+            _context = context;
+            usersData = new UsersData(_context);
+            coursesData = new CoursesData(_context);
         }
 
         public IActionResult Index()
         {
-            if (SessionHelper.Get<User>(HttpContext.Session, SessionHelper.SessionKeyUser) != null)
-                TempData[TempDataHelper.TempdataKeyIsConnected] = true;
-            return View();
+            return RedirectToAction("Index", "Courses");
         }
 
         public IActionResult Privacy()

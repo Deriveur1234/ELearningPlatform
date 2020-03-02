@@ -1,0 +1,15 @@
+﻿@model ELearningPlatform.Models.Course
+@using static ELearningPlatform.Data.TempDataHelper
+@using static ELearningPlatform.Data.CoursesData
+<div class="card mb-4">
+    <div class="view overlay">
+        <img class="img-fluid" src="@ViewData[ViewDataIco]" alt="Card image cap">
+        <a href="CourseDetails?id=@ViewData[ViewDataId]">
+            <div class="mask rgba-white-slight"></div>
+        </a>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">@ViewData[ViewDataName]</h4>
+        <p class="card-text">@ViewData[ViewDataDesc]</p>
+    </div>
+</div>

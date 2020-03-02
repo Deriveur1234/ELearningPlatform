@@ -1,0 +1,75 @@
+﻿@model ELearningPlatform.Models.Course
+@using static ELearningPlatform.Data.TempDataHelper
+@{
+    ViewData["Title"] = "CourseDetail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    Course course = new Course();
+    if (TempData[TempdataKeyCourse] != null)
+    {
+        course = (Course)TempData[TempdataKeyCourse];
+        TempData[TempdataKeyCourse] = null;
+    }
+}
+
+<div class="container mt-2">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a class="black-text" href="#">Courses</a>
+            <i class="fa fa-angle-right mx-2" aria-hidden="true"></i>
+        </li>
+        <li class="breadcrumb-item active">Angular 5</li>
+    </ol>
+    <hr />
+</div>
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-12">
+            <h4 class="mb-3">@course.Name</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <img class="img-fluid mb-3" src="@course.Ico" alt="Card image cap">
+            <p>@course.Desc</p>
+            <button disabled type="button" class="btn btn-default btn-sm mb-3">Enroll</button>
+            <p class="text-muted text-sm">You are currently enrolled in this course.</p>
+        </div>
+        <div class="col-md-8">
+            <h6 class="mb-4">Course Modules</h6>
+            <table class="table table-hover table-responsive-md">
+                <tbody>
+                    <tr>
+                        <td>
+                            <i class="fa fa-check" aria-hidden="true"></i>
+                            <a href="module-detail.html">Getting Started</a>
+                        </td>
+                        <td class="text-right">Juni Brosas</td>
+                        <td class="text-right">2/26/2018</td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
+                            <a href="module-detail.html">Components & Data bindings Deep Dive</a>
+                        </td>
+                        <td class="text-right">Juni Brosas</td>
+                        <td class="text-right">2/26/2018</td>
+                    </tr>
+                    <tr>
+                        <td class="empty-value">
+                            <a href="module-detail.html">Understanding Observables</a>
+                        </td>
+                        <td class="text-right">Juni Brosas</td>
+                        <td class="text-right">2/26/2018</td>
+                    </tr>
+                    <tr>
+                        <td class="empty-value">
+                            <a href="module-detail.html">Handling Forms in Angular Apps</a>
+                        </td>
+                        <td class="text-right">Juni Brosas</td>
+                        <td class="text-right">2/26/2018</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

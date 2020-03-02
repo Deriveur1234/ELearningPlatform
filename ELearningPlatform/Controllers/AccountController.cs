@@ -105,8 +105,7 @@ namespace ELearningPlatform.Controllers
                 user.Password = null;
                 // Put in session an serialized object User 
                 SessionHelper.Set<User>(HttpContext.Session, SessionHelper.SessionKeyUser, user);
-                TempData[TempDataHelper.TempdataKeyIsConnected] = true;
-                return View("Index");
+                return RedirectToAction("Index", "home");
             }
             return View("Login");
         }
@@ -117,7 +116,7 @@ namespace ELearningPlatform.Controllers
         {
             SessionHelper.Set<User>(HttpContext.Session, SessionHelper.SessionKeyUser, null);
             TempData[TempDataHelper.TempdataKeyIsConnected] = null;
-            return View("Index");
+            return RedirectToAction("Index", "home");
         }
 
         [Route("SignUp")]
@@ -142,7 +141,7 @@ namespace ELearningPlatform.Controllers
                 _context.Entry(newUser).GetDatabaseValues();
                 SendActivationMail(newUser.Email, CreateToken(newUser).Code);
             }
-            return View("Index");
+            return RedirectToAction("Index", "home");
         }
 
         [Route("Activate")]
@@ -157,11 +156,11 @@ namespace ELearningPlatform.Controllers
                 {
                     user = _context.User.Find(token[0].Id);
                     user.IsConfirmed = true;
-                    _context.SaveChanges();
+                    await _context.SaveChangesAsync();
                 }
             }catch
             {
-                return View("Index");
+                return RedirectToAction("Index", "home");
             }
 
             return View("Login");
@@ -169,7 +168,7 @@ namespace ELearningPlatform.Controllers
 
         [Route("ForgotPassword")]
         [HttpGet]
-        public async Task<IActionResult> ForgotPasswordUser(string Email)
+        public IActionResult ForgotPasswordUser(string Email)
         {
             if(Email != null)
             {

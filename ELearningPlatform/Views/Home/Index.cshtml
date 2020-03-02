@@ -1,154 +1,98 @@
-﻿@{
+﻿@using static ELearningPlatform.Data.TempDataHelper
+@using static ELearningPlatform.Data.CoursesData
+@model ELearningPlatform.Models.Course
+@{
     ViewData["Title"] = "Home Page";
+    var allCourses = new List<Course>();
+    if (TempData[TempdataKeyAllCourses] == null)
+        allCourses = new List<Course>();
+    else
+        allCourses = (List<Course>)TempData[TempdataKeyAllCourses];
+
+    if (TempData[TempdataKeyIsConnected] != null && (bool)TempData[TempdataKeyIsConnected] == true)
+    {
+
+        <div class="container">
+
+            <div class="well">
+                <div class="row">
+                    <div class="col-md-12 mb-3">
+                        Resume your current lesson
+                        <i class="fa fa-angle-right" aria-hidden="true"></i>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-1">
+                        <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg" alt="Card image cap">
+                    </div>
+                    <div class="col-md-11 title-group">
+                        <span class="title-primary">Angular 5 Training</span>
+                        <span class="title-secondary">
+                            Changing Pages with Routing
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12 mb-2">
+                    <h4 class="title-sting">Your Courses</h4>
+                </div>
+            </div>
+            <div class="card-deck">
+                @{
+                    int b = 0;
+                    List<Course> coursesInscripted = new List<Course>();
+                    foreach (int idCourse in (List<int>)TempData[TempdataKeyInscriptionCourse])
+                    {
+                        var course = allCourses.Find(e => e.Id == idCourse);
+                        ViewDataDictionary courseValue = new ViewDataDictionary(ViewData) { { ViewDataId, course.Id }, { ViewDataName, course.Name }, { ViewDataDesc, course.Desc }, { ViewDataIco, course.Ico } };
+                        await Html.RenderPartialAsync("Course", courseValue);
+                        if (b >= 2)
+                        {
+                            <br />
+                            b = 0;
+                        }
+                        b++;
+                    }
+                }
+            </div>
+        </div>
+    }
 }
-
-<div class="container">
-    <div class="well">
-        <div class="row">
-            <div class="col-md-12 mb-3">
-                Resume your current lesson
-                <i class="fa fa-angle-right" aria-hidden="true"></i>
+        <hr class="my-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h4 class="title-sting">All Courses</h4>
+                </div>
+                <div class="col-md-3">
+                    <div class="md-form">
+                        <input type="text" id="inputIconEx1" class="form-control">
+                        <label for="inputIconEx1">Search</label>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <select class="browser-default custom-select">
+                        <option selected>Show all subjects</option>
+                        <option value="1">Show completed subjects</option>
+                    </select>
+                </div>
             </div>
+            <div class="card-deck">
+                @{
+                    int i = 0;
+                    foreach (Course course in allCourses)
+                    {
+                        ViewDataDictionary courseValue = new ViewDataDictionary(ViewData) { { ViewDataId, course.Id }, { ViewDataName, course.Name }, { ViewDataDesc, course.Desc }, { ViewDataIco, course.Ico } };
+                        await Html.RenderPartialAsync("Course", courseValue);
+                        if (i >= 2)
+                        {
+                            <br />
+                            i = 0;
+                        }
+                        i++;
+                    }
+                }
+            </div>
+            <!--Card group-->
         </div>
-        <div class="row">
-            <div class="col-md-1">
-                <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg" alt="Card image cap">
-            </div>
-            <div class="col-md-11 title-group">
-                <span class="title-primary">Angular 5 Training</span>
-                <span class="title-secondary">
-                    Changing Pages with Routing
-                </span>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12 mb-2">
-            <h4 class="title-sting">Your Courses</h4>
-        </div>
-    </div>
-    <div class="card-deck">
-        <div class="card mb-4">
-            <div class="view overlay">
-                <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg" alt="Card image cap">
-                <a href="course-detail.html">
-                    <div class="mask rgba-white-slight"></div>
-                </a>
-            </div>
-            <div class="card-body">
-                <h4 class="card-title">Angular 5 Training</h4>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-        </div>
-        <div class="card mb-4">
-            <div class="view overlay">
-                <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/14.jpg" alt="Card image cap">
-                <a href="course-detail.html">
-                    <div class="mask rgba-white-slight"></div>
-                </a>
-            </div>
-            <div class="card-body">
-                <h4 class="card-title">Getting Started with PHP</h4>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-        </div>
-    </div>
-</div>
-<hr class="my-5">
-<div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <h4 class="title-sting">All Courses</h4>
-        </div>
-        <div class="col-md-3">
-            <div class="md-form">
-                <input type="text" id="inputIconEx1" class="form-control">
-                <label for="inputIconEx1">Search</label>
-            </div>
-        </div>
-        <div class="col-md-3">
-            <select class="browser-default custom-select">
-                <option selected>Show all subjects</option>
-                <option value="1">Show completed subjects</option>
-            </select>
-        </div>
-    </div>
-    <div class="card-deck">
-        <div class="card mb-4">
-            <div class="view overlay">
-                <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg" alt="Card image cap">
-                <a href="course-detail.html">
-                    <div class="mask rgba-white-slight"></div>
-                </a>
-            </div>
-            <div class="card-body">
-                <h4 class="card-title">Angular 5 Training</h4>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-        </div>
-        <div class="card mb-4">
-            <div class="view overlay">
-                <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/14.jpg" alt="Card image cap">
-                <a href="course-detail.html">
-                    <div class="mask rgba-white-slight"></div>
-                </a>
-            </div>
-            <div class="card-body">
-                <h4 class="card-title">Getting Started with PHP</h4>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-        </div>
-        <div class="card mb-4">
-            <div class="view overlay">
-                <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/15.jpg" alt="Card image cap">
-                <a href="course-detail.html">
-                    <div class="mask rgba-white-slight"></div>
-                </a>
-            </div>
-            <div class="card-body">
-                <h4 class="card-title">Set up backend with Node.js</h4>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-        </div>
-    </div>
-    <div class="card-deck">
-        <div class="card mb-4">
-            <div class="view overlay">
-                <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg" alt="Card image cap">
-                <a href="course-detail.html">
-                    <div class="mask rgba-white-slight"></div>
-                </a>
-            </div>
-            <div class="card-body">
-                <h4 class="card-title">Learn Pure functions</h4>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-        </div>
-        <div class="card mb-4">
-            <div class="view overlay">
-                <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/14.jpg" alt="Card image cap">
-                <a href="course-detail.html">
-                    <div class="mask rgba-white-slight"></div>
-                </a>
-            </div>
-            <div class="card-body">
-                <h4 class="card-title">Javascript Closure</h4>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-        </div>
-        <div class="card mb-4">
-            <div class="view overlay">
-                <img class="img-fluid" src="https://mdbootstrap.com/img/Photos/Others/images/15.jpg" alt="Card image cap">
-                <a href="course-detail.html">
-                    <div class="mask rgba-white-slight"></div>
-                </a>
-            </div>
-            <div class="card-body">
-                <h4 class="card-title">Master the Frontend</h4>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-        </div>
-
-    </div>
-    <!--Card group-->
-</div>

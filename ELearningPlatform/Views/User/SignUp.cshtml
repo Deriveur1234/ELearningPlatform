@@ -1,13 +1,12 @@
 ﻿@model ELearningPlatform.Models.User
 @using static ELearningPlatform.Data.TempDataHelper
-@using static ELearningPlatform.Models.Role
 @{
     ViewData["Title"] = "SignUp";
     Layout = "_LayoutUser";
 }
 
 <form method="get" asp-controller="Account" asp-action="SignUp">
-    <div class="card mb-2">
+    <div class="card mb-auto">
         <div class="card-body">
 
             <div asp-validation-summary="ModelOnly" class="text-danger">@TempData[TempdataKeyErrorMessage]</div>
@@ -27,14 +26,14 @@
                 <span asp-validation-for="Password" class="text-danger"></span>
             </div>
             <div class="md-form">
-                <label asp-for="IdCode" class="control-label">Select zour choosen role</label>
+                <label asp-for="IdCode" class="control-label">Select your choosen role</label>
                 <select asp-for="IdCode">
 
                 </select>
             </div>
         </div>
     </div>
-    <div class="text-center">
+    <div class="text-center mb-auto">
         <input type="submit" value="Create" class="btn btn-default btn-sm mb-3 btn-block" />
         <span class="small-link">Already have an account?</span>
         <a asp-controller="Home" asp-action="Login" class="small-link">Login</a>
