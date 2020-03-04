@@ -54,5 +54,24 @@ namespace ELearningPlatform.Data
         {
             return _context.Course.Find(IdCourse);
         }
+
+        public bool addInscription(Inscription inscription)
+        {
+            try
+            {
+                _context.Inscription.Add(inscription);
+                _context.SaveChanges();
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public bool isEnrolled(int IdCourse, int IdUser)
+        {
+            return (_context.Inscription.Where(e => e.IdCourse == IdCourse && e.IdUser == IdUser).Count() > 0);
+        }
     }
 }

@@ -12,8 +12,6 @@ using Microsoft.AspNetCore.Http;
 using System.Text;
 using EmailService;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
 namespace ELearningPlatform.Controllers
 {
     [Route("[controller]")]
@@ -93,7 +91,7 @@ namespace ELearningPlatform.Controllers
             User user = new User();
             user.Username = Username;
             user.Password = GetSha1(Password);
-            if(usersData.CheckLogin(user))
+            if (usersData.CheckLogin(user))
             {
                 user = usersData.GetUserByUsername(user.Username);
                 if (!user.IsConfirmed)
@@ -107,6 +105,8 @@ namespace ELearningPlatform.Controllers
                 SessionHelper.Set<User>(HttpContext.Session, SessionHelper.SessionKeyUser, user);
                 return RedirectToAction("Index", "home");
             }
+            else
+                TempData[TempDataHelper.TempdataKeyErrorMessage] = "Username or password incorrect";
             return View("Login");
         }
 
@@ -137,7 +137,7 @@ namespace ELearningPlatform.Controllers
             else
             {
                 _context.User.Add(newUser);
-                _context.SaveChanges();
+                await _context.SaveChangesAsync();
                 _context.Entry(newUser).GetDatabaseValues();
                 SendActivationMail(newUser.Email, CreateToken(newUser).Code);
             }

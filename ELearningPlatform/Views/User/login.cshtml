@@ -1,4 +1,5 @@
 ﻿@model ELearningPlatform.Models.User
+@using static ELearningPlatform.Data.TempDataHelper
 @{
     ViewData["Title"] = "login";
     Layout = "_LayoutUser";
@@ -7,6 +8,9 @@
 <form method="post" asp-controller="Account" asp-action="Login">
     <div class="card mb-2">
         <div class="card-body">
+            @if(TempData[TempdataKeyErrorMessage] != null){ 
+            <div class="text-danger">@TempData[TempdataKeyErrorMessage]</div>
+            }
             <div class="md-form">
                 <input asp-for="Email" type="text" id="Username" name="Username" class="form-control">
                 <label for="Username">Username</label>

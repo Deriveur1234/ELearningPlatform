@@ -70,6 +70,8 @@ namespace ELearningPlatform
                 ("/Views/User/{0}" + RazorViewEngine.ViewExtension);
                 o.ViewLocationFormats.Add
                 ("/Views/Courses/{0}" + RazorViewEngine.ViewExtension);
+                o.ViewLocationFormats.Add
+                ("/Views/Modules/{0}" + RazorViewEngine.ViewExtension);
             });
 
         }
@@ -97,13 +99,6 @@ namespace ELearningPlatform
             app.UseRouting();
 
             app.UseAuthorization();
-            
-            app.UseEndpoints(endpoints =>
-            {
-                endpoints.MapControllerRoute(
-                    name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
-            });
 
             app.UseEndpoints(endpoints =>
             {

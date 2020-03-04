@@ -14,5 +14,6 @@ namespace ELearningPlatform.Models
 
         public int PlaceInModule { get; set; }
         public int idModule { get; set; }
+        public string Data { get; set; }
     }
 }

@@ -52,6 +52,8 @@ namespace ELearningPlatform.Migrations
 
                     b.Property<int>("idModule")
                         .HasColumnType("int");
+                    b.Property<string>("Data")
+                        .HasColumnType("nvarchar(MAX)");
 
                     b.HasKey("Id");
 
@@ -118,6 +120,12 @@ namespace ELearningPlatform.Migrations
 
                     b.Property<string>("Label")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("IdInstructor")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreationDate")
+                        .HasColumnType("DateTime");
 
                     b.HasKey("Id");
 

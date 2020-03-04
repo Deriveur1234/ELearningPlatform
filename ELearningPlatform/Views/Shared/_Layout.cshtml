@@ -1,4 +1,14 @@
 ﻿@using ELearningPlatform.Data
+@{ 
+    if (TempData[TempDataHelper.TempdataKeyUserName] == null)
+    {
+        TempData[TempDataHelper.TempdataKeyUserName] = "";
+    }
+    if (TempData[TempDataHelper.TempdataKeyUserRole] == null)
+    {
+        TempData[TempDataHelper.TempdataKeyUserRole] = "Guest";
+    }
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,8 +38,8 @@
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav ml-auto nav-flex-icons">
                         <li class="nav-item profile-group">
-                            <span class="profile name">John Doe</span>
-                            <span class="profile type">Learner</span>
+                            <span class="profile name">@TempData[TempDataHelper.TempdataKeyUserName]</span>
+                            <span class="profile type">@TempData[TempDataHelper.TempdataKeyUserRole]</span>
                         </li>
                         <li class="nav-item avatar dropdown">
                             <a class="nav-link dropdown-toggle waves-effect waves-light" id="navbarDropdownMenuLink-5" data-toggle="dropdown" aria-haspopup="true"

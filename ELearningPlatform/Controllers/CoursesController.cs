@@ -15,11 +15,15 @@ namespace ELearningPlatform.Controllers
     {
         private readonly ELearningPlatformContext _context;
         private readonly CoursesData _coursesData;
+        private readonly UsersData _usersData;
+        private readonly ModuleData _moduleData;
 
         public CoursesController(ELearningPlatformContext context)
         {
             _context = context;
             _coursesData = new CoursesData(_context);
+            _usersData = new UsersData(_context);
+            _moduleData = new ModuleData(_context);
         }
 
         public IActionResult Index()
@@ -30,7 +34,8 @@ namespace ELearningPlatform.Controllers
                 List<int> coursesId = _coursesData.GetSubscribedCourseId(user.Id);
                 TempData[TempDataHelper.TempdataKeyInscriptionCourse] = coursesId;
                 TempData[TempDataHelper.TempdataKeyIsConnected] = true;
-                
+                TempData[TempDataHelper.TempdataKeyUserName] = user.Username;
+                TempData[TempDataHelper.TempdataKeyUserRole] = _usersData.GetRoleName(user.IdCode);
             }
             TempData[TempDataHelper.TempdataKeyAllCourses] = _coursesData.GetAllCourses();
             return View();
@@ -41,7 +46,41 @@ namespace ELearningPlatform.Controllers
         public IActionResult CourseDetails(int id)
         {
             TempData[TempDataHelper.TempdataKeyCourse] = _coursesData.GetCourseById(id);
+            User user = SessionHelper.Get<User>(HttpContext.Session, SessionHelper.SessionKeyUser);
+            if(user != null)
+            {
+                TempData[TempDataHelper.TempdataKeyIsEnrolled] = _coursesData.isEnrolled(id, user.Id);
+                TempData[TempDataHelper.TempdataKeyIsConnected] = true;
+                TempData[TempDataHelper.TempdataKeyUserName] = user.Username;
+                TempData[TempDataHelper.TempdataKeyUserRole] = _usersData.GetRoleName(user.IdCode);
+                TempData[TempDataHelper.TempdataKeyCompletedModule] = _moduleData.GetCompletedModule(id, user.Id);
+            }
+            else
+            {
+                TempData[TempDataHelper.TempdataKeyIsEnrolled] = false;
+            }
+
+            TempData[TempDataHelper.TempdataKeyModules] = _moduleData.GetModulesCourse(id);
+            TempData[TempDataHelper.TempdataKeyModulesInstructor] = _moduleData.GetInstructorForAllModuleCourse(id);
             return View("CourseDetail");
         }
+
+        [Route("Enroll")]
+        [HttpGet]
+        public IActionResult EnrollCourse(int id)
+        {
+            User user = SessionHelper.Get<User>(HttpContext.Session, SessionHelper.SessionKeyUser);
+            if(user != null && id != 0)
+            {
+                Inscription inscription = new Inscription();
+                inscription.IdUser = user.Id;
+                inscription.IdCourse = id;
+                if (_coursesData.addInscription(inscription))
+                    return CourseDetails(id);
+            }
+            return RedirectToAction("Index", "home");
+        }
+
+        
     }
 }

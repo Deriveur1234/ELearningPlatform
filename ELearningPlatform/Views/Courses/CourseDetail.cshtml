@@ -4,10 +4,20 @@
     ViewData["Title"] = "CourseDetail";
     Layout = "~/Views/Shared/_Layout.cshtml";
     Course course = new Course();
+    List<int> completedModule = new List<int>();
+    IDictionary<int, string> InstructorName = new Dictionary<int, string>();
     if (TempData[TempdataKeyCourse] != null)
     {
         course = (Course)TempData[TempdataKeyCourse];
         TempData[TempdataKeyCourse] = null;
+    }
+    if(TempData[TempdataKeyCompletedModule] != null)
+    {
+        completedModule = (List<int>)TempData[TempdataKeyCompletedModule];
+    }
+    if(TempData[TempdataKeyModulesInstructor] != null)
+    {
+        InstructorName = (Dictionary<int, string>)TempData[TempdataKeyModulesInstructor];
     }
 }
 
@@ -31,43 +41,34 @@
         <div class="col-md-4">
             <img class="img-fluid mb-3" src="@course.Ico" alt="Card image cap">
             <p>@course.Desc</p>
-            <button disabled type="button" class="btn btn-default btn-sm mb-3">Enroll</button>
-            <p class="text-muted text-sm">You are currently enrolled in this course.</p>
+            @if ((bool)TempData[TempdataKeyIsEnrolled])
+            {
+                <button disabled type="button" class="btn btn-default btn-sm mb-3">Enroll</button>
+                <p class="text-muted text-sm">You are currently enrolled in this course.</p>
+            }
+            else
+            {
+                <a href="Enroll?id=@course.Id"><button type="button" class="btn btn-default btn-sm mb-3">Enroll</button></a>
+            }
         </div>
         <div class="col-md-8">
             <h6 class="mb-4">Course Modules</h6>
             <table class="table table-hover table-responsive-md">
                 <tbody>
-                    <tr>
-                        <td>
-                            <i class="fa fa-check" aria-hidden="true"></i>
-                            <a href="module-detail.html">Getting Started</a>
-                        </td>
-                        <td class="text-right">Juni Brosas</td>
-                        <td class="text-right">2/26/2018</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <i class="fa fa-chevron-right" aria-hidden="true"></i>
-                            <a href="module-detail.html">Components & Data bindings Deep Dive</a>
-                        </td>
-                        <td class="text-right">Juni Brosas</td>
-                        <td class="text-right">2/26/2018</td>
-                    </tr>
-                    <tr>
-                        <td class="empty-value">
-                            <a href="module-detail.html">Understanding Observables</a>
-                        </td>
-                        <td class="text-right">Juni Brosas</td>
-                        <td class="text-right">2/26/2018</td>
-                    </tr>
-                    <tr>
-                        <td class="empty-value">
-                            <a href="module-detail.html">Handling Forms in Angular Apps</a>
-                        </td>
-                        <td class="text-right">Juni Brosas</td>
-                        <td class="text-right">2/26/2018</td>
-                    </tr>
+                    @foreach (Module module in (List<Module>)TempData[TempdataKeyModules])
+                    {
+                        <tr>
+                            <td>
+                                @if (completedModule.Exists(e => e == module.Id))
+                                {
+                                    <i class="fa fa-check" aria-hidden="true"></i>
+                                }
+                                <a href="ModuleDetails?id=@module.Id">@module.Label</a>
+                            </td>
+                            <td class="text-right">@InstructorName[module.Id]</td>
+                            <td class="text-right">@module.CreationDate</td>
+                        </tr>
+                    }
                 </tbody>
             </table>
         </div>

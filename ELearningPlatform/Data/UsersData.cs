@@ -63,7 +63,12 @@ namespace ELearningPlatform.Data
 
         public int GetIdUserByTokenCode(string TokenCode)
         {
-            return _context.User.Find(_context.Token.Where(e => e.Code == TokenCode).ToList()[0].Id).Id;
+            return _context.User.Find(_context.Token.Where(e => e.Code == TokenCode).FirstOrDefault().Id).Id;
+        }
+
+        public string GetRoleName(int IdRole)
+        {
+            return _context.Role.Find(IdRole).Label;
         }
 
     }
