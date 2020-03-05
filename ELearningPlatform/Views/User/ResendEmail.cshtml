@@ -1,0 +1,27 @@
+﻿@using static ELearningPlatform.Data.TempDataHelper
+@model ELearningPlatform.Models.User
+@{
+    ViewData["Title"] = "ResendEmail";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<form method="get" asp-controller="Account" asp-action="ResendEmail">
+    <div class="card mb-2">
+        <div class="card-body">
+            @if (TempData[TempdataKeyErrorMessage] != null)
+            {
+                <div class="text-danger">@TempData[TempdataKeyErrorMessage]</div>
+            }
+            <div class="md-form">
+                <input asp-for="Email" type="text" id="Email" name="Email" class="form-control">
+                <label for="Email">Email</label>
+            </div>
+        </div>
+    </div>
+    <div class="text-center">
+        <!--<a asp-controller="Account" asp-action="Login" class="btn btn-default btn-sm mb-3 btn-block">Login</a>-->
+        <input type="submit" class="btn btn-default btn-sm mb-3 btn-block" value="Resend email" />
+        <a asp-controller="Home" asp-action="Login" class="small-link">Login</a>
+    </div>
+</form>
+

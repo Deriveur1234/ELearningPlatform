@@ -48,6 +48,11 @@ namespace ELearningPlatform.Data
             return null;
         }
 
+        public User GetUserById(int IdUser)
+        {
+            return _context.User.Find(IdUser);
+        }
+
         /**
 	     * @brief Retourne true si le password et le nickname sont dans la base
 	     * @param user De type User, doit contenir le username et le password

@@ -36,9 +36,23 @@ namespace ELearningPlatform.Controllers
             TempData[TempDataHelper.TempdataKeyContents] = contents;
             TempData[TempDataHelper.TempdataKeyModule] = _moduleData.GetModule(id);
             TempData[TempDataHelper.TempdataKeyModuleInstructor] = _moduleData.GetInstructor(id);
+            TempData[TempDataHelper.TempdataKeyCourse] = _coursesData.GetCourseByModule(id);
             if(user != null)
                 TempData[TempDataHelper.TempdataKeyModuleIsFinished] = _moduleData.isFinished(id, user.Id);
             return View("ModuleDetails");
+        }
+
+        [Route("CompleteModule")]
+        [HttpGet]
+        public IActionResult CompleteModule(int id)
+        {
+            User user = SessionHelper.Get<User>(HttpContext.Session, SessionHelper.SessionKeyUser);
+            if(user != null)
+            {
+                if (_moduleData.CompleteModule(id, user.Id))
+                    return DetailsModule(id);
+            }
+            return RedirectToAction("Login", "Home");
         }
     }
 }

@@ -31,5 +31,8 @@ namespace ELearningPlatform.Data
         public const string TempdataKeyContents = "_content";
         public const string TempdataKeyModuleIsFinished = "_isFinished";
 
+        //Subject TempData Key
+        public const string TempdataKeySubjects = "_Subjects";
+
     }
 }

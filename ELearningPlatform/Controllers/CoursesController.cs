@@ -17,6 +17,7 @@ namespace ELearningPlatform.Controllers
         private readonly CoursesData _coursesData;
         private readonly UsersData _usersData;
         private readonly ModuleData _moduleData;
+        private readonly SubjectData _subjectData;
 
         public CoursesController(ELearningPlatformContext context)
         {
@@ -24,6 +25,7 @@ namespace ELearningPlatform.Controllers
             _coursesData = new CoursesData(_context);
             _usersData = new UsersData(_context);
             _moduleData = new ModuleData(_context);
+            _subjectData = new SubjectData(_context);
         }
 
         public IActionResult Index()
@@ -38,6 +40,7 @@ namespace ELearningPlatform.Controllers
                 TempData[TempDataHelper.TempdataKeyUserRole] = _usersData.GetRoleName(user.IdCode);
             }
             TempData[TempDataHelper.TempdataKeyAllCourses] = _coursesData.GetAllCourses();
+            TempData[TempDataHelper.TempdataKeySubjects] = _subjectData.GetAllSubjects();
             return View();
         }
 

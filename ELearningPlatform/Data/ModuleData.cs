@@ -56,6 +56,23 @@ namespace ELearningPlatform.Data
             return InstructorName;
         }
 
+        public bool CompleteModule(int idModule, int idUser)
+        {
+            Completed completed = new Completed();
+            completed.IdModule = idModule;
+            completed.IdUser = idUser;
+            try
+            {
+                _context.Completed.Add(completed);
+                _context.SaveChanges();
+            }
+            catch
+            {
+                return false;
+            }
+            return true;
+        }
+
         public List<Content> GetContents(int idModule)
         {
             return _context.Content.Where(e => e.idModule == idModule).ToList();

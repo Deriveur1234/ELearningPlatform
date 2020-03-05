@@ -96,8 +96,7 @@ namespace ELearningPlatform.Controllers
                 user = usersData.GetUserByUsername(user.Username);
                 if (!user.IsConfirmed)
                 {
-                    TempData[TempDataHelper.TempdataKeyErrorMessage] = "Please check your email to confirm your account";
-                    return View("Login");
+                    return View("ResendEmail");
                 }
                 // dont want to stock the password in session even if hashed
                 user.Password = null;
@@ -203,6 +202,21 @@ namespace ELearningPlatform.Controllers
                 return View("ResetPassword");
             }
             return View("Login");
+        }
+
+        [Route("ResendEmail")]
+        [HttpGet]
+        public IActionResult ResendEmailUser(string Email)
+        {
+            if(Email != null)
+            {
+                User user = usersData.GetUserByEmail(Email);
+                DeleteToken(user.Id);
+                Token token = CreateToken(user);
+                SendActivationMail(user.Email, token.Code);
+                return RedirectToAction("Login", "home");
+            }
+            return View("ResendEmail");
         }
 
 

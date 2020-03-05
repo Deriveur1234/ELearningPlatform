@@ -4,10 +4,14 @@
 @{
     ViewData["Title"] = "Home Page";
     var allCourses = new List<Course>();
+    List<Subject> subjects = new List<Subject>();
     if (TempData[TempdataKeyAllCourses] == null)
         allCourses = new List<Course>();
     else
         allCourses = (List<Course>)TempData[TempdataKeyAllCourses];
+
+    if (TempData[TempdataKeySubjects] != null)
+        subjects = (List<Subject>)TempData[TempdataKeySubjects];
 
     if (TempData[TempdataKeyIsConnected] != null && (bool)TempData[TempdataKeyIsConnected] == true)
     {
@@ -59,40 +63,43 @@
         </div>
     }
 }
-        <hr class="my-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <h4 class="title-sting">All Courses</h4>
-                </div>
-                <div class="col-md-3">
-                    <div class="md-form">
-                        <input type="text" id="inputIconEx1" class="form-control">
-                        <label for="inputIconEx1">Search</label>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <select class="browser-default custom-select">
-                        <option selected>Show all subjects</option>
-                        <option value="1">Show completed subjects</option>
-                    </select>
-                </div>
-            </div>
-            <div class="card-deck">
-                @{
-                    int i = 0;
-                    foreach (Course course in allCourses)
-                    {
-                        ViewDataDictionary courseValue = new ViewDataDictionary(ViewData) { { ViewDataId, course.Id }, { ViewDataName, course.Name }, { ViewDataDesc, course.Desc }, { ViewDataIco, course.Ico } };
-                        await Html.RenderPartialAsync("Course", courseValue);
-                        if (i >= 2)
-                        {
-                            <br />
-                            i = 0;
-                        }
-                        i++;
-                    }
-                }
-            </div>
-            <!--Card group-->
+<hr class="my-5">
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h4 class="title-sting">All Courses</h4>
         </div>
+        <div class="col-md-3">
+            <div class="md-form">
+                <input type="text" id="inputIconEx1" class="form-control">
+                <label for="inputIconEx1">Search</label>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <select class="browser-default custom-select">
+                <option selected>Show all subjects</option>
+                <option value="0">Show completed subjects</option>
+                @foreach(Subject subject in subjects)
+                {
+                    <option value="@subject.Id">@subject.Label</option>
+                }
+            </select>
+        </div>
+    </div>
+    <div class="card-deck">
+        @{
+            int i = 0;
+            foreach (Course course in allCourses)
+            {
+                ViewDataDictionary courseValue = new ViewDataDictionary(ViewData) { { ViewDataId, course.Id }, { ViewDataName, course.Name }, { ViewDataDesc, course.Desc }, { ViewDataIco, course.Ico } };
+                await Html.RenderPartialAsync("Course", courseValue);
+                if (i >= 2)
+                {
+                    <br />
+                    i = 0;
+                }
+                i++;
+            }
+        }
+    </div>
+</div>

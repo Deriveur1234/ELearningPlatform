@@ -5,6 +5,7 @@
     ViewData["Title"] = "ModuleDetails";
     Layout = "~/Views/Shared/_Layout.cshtml";
     Module module = new Module();
+    Course course = new Course();
     List<Content> contents = new List<Content>();
     string InstructorName = "";
     bool isFinished = false;
@@ -24,16 +25,20 @@
     {
         isFinished = (bool)TempData[TempdataKeyModuleIsFinished];
     }
+    if(TempData[TempdataKeyCourse] != null)
+    {
+        course = (Course)TempData[TempdataKeyCourse];
+    }
 }
 
 <div class="container mt-2">
     <ol class="breadcrumb">
         <li class="breadcrumb-item">
-            <a class="black-text" href="#">Courses</a>
+            <a class="black-text" asp-controller="home" asp-action="index">Courses</a>
             <i class="fa fa-angle-right mx-2" aria-hidden="true"></i>
         </li>
         <li class="breadcrumb-item">
-            <a class="black-text" href="#">Angular 5</a>
+            <a class="black-text" href="CourseDetails?id=@course.Id">@course.Name</a>
             <i class="fa fa-angle-right mx-2" aria-hidden="true"></i>
         </li>
         <li class="breadcrumb-item active">@module.Label</li>
@@ -52,7 +57,7 @@
             else
             {
                 <button class="btn btn-default float-right">
-                    <i class="fa fa-square-o" aria-hidden="true"></i> Mark as Complete</button>
+                    <a href="CompleteModule?id=@module.Id"><i class="fa fa-square-o" aria-hidden="true"></i> Mark as Complete</a></button>
             }
 
         </div>
