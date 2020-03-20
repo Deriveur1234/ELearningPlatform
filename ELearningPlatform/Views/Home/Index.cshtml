@@ -3,7 +3,7 @@
 @model ELearningPlatform.Models.Course
 @{
     ViewData["Title"] = "Home Page";
-    var allCourses = new List<Course>();
+    List<Course> allCourses = new List<Course>();
     List<Subject> subjects = new List<Subject>();
     if (TempData[TempdataKeyAllCourses] == null)
         allCourses = new List<Course>();
@@ -61,7 +61,7 @@
                 }
             </div>
         </div>
-    }
+                    }
 }
 <hr class="my-5">
 <div class="container">
@@ -76,14 +76,14 @@
             </div>
         </div>
         <div class="col-md-3">
-            <select class="browser-default custom-select">
-                <option selected>Show all subjects</option>
-                <option value="0">Show completed subjects</option>
-                @foreach(Subject subject in subjects)
+            @{
+                ViewDataDictionary subjectValue = new ViewDataDictionary(ViewData);
+                foreach (Subject subject in subjects)
                 {
-                    <option value="@subject.Id">@subject.Label</option>
+                    subjectValue.Add(subject.Label, subject);
                 }
-            </select>
+                await Html.RenderPartialAsync("Filter", subjectValue);
+            }
         </div>
     </div>
     <div class="card-deck">

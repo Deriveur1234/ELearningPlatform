@@ -60,6 +60,18 @@ namespace ELearningPlatform.Data
             return _context.Course.Where(e => e.Id == _context.Module.Find(IdModule).IdCourse).FirstOrDefault();
         }
 
+        public List<Course> GetCoursesBySubject(int IdSubject)
+        {
+            try
+            {
+                return _context.Course.Where(e => e.IdSubject == IdSubject).ToList();
+            }
+            catch
+            {
+                return new List<Course>();
+            }
+        }
+
         public bool addInscription(Inscription inscription)
         {
             try

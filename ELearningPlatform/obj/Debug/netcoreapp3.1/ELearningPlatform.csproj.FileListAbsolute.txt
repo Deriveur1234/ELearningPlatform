@@ -344,3 +344,4 @@ C:\Users\lburnand\Documents\GitHub\ELearningPlatform\ELearningPlatform\obj\Debug
 C:\Users\lburnand\Documents\GitHub\ELearningPlatform\ELearningPlatform\obj\Debug\netcoreapp3.1\Razor\Views\Courses\CourseDetail.cshtml.g.cs
 C:\Users\lburnand\Documents\GitHub\ELearningPlatform\ELearningPlatform\obj\Debug\netcoreapp3.1\Razor\Views\Modules\ModuleDetails.cshtml.g.cs
 C:\Users\lburnand\Documents\GitHub\ELearningPlatform\ELearningPlatform\obj\Debug\netcoreapp3.1\Razor\Views\User\ResendEmail.cshtml.g.cs
+C:\Users\lburnand\Documents\GitHub\ELearningPlatform\ELearningPlatform\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Filter.cshtml.g.cs

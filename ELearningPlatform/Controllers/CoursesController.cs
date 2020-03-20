@@ -84,6 +84,13 @@ namespace ELearningPlatform.Controllers
             return RedirectToAction("Index", "home");
         }
 
+
+        [Route("Ajax/GetIdCourseBySubject")]
+        [HttpGet]
+        public String GetIdCourseBySubject(int IdSubject)
+        {
+            return JsonConvert.SerializeObject(_coursesData.GetCoursesBySubject(IdSubject));
+        }
         
     }
 }

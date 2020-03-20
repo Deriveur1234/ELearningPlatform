@@ -8,7 +8,6 @@
 <form method="get" asp-controller="Account" asp-action="SignUp">
     <div class="card mb-auto">
         <div class="card-body">
-
             <div asp-validation-summary="ModelOnly" class="text-danger">@TempData[TempdataKeyErrorMessage]</div>
             <div class="md-form">
                 <label asp-for="Email" id="Email"></label>
@@ -27,8 +26,9 @@
             </div>
             <div class="md-form">
                 <label asp-for="IdCode" class="control-label">Select your choosen role</label>
-                <select asp-for="IdCode">
-
+                <select asp-for="IdCode" class="form-control">
+                    <option>User</option>
+                    <option>Instructor</option>
                 </select>
             </div>
         </div>

@@ -1,0 +1,14 @@
+﻿    <select class="browser-default custom-select" id="Select-Subject">
+        <option value="0" selected>Show all subjects</option>
+        @{
+            foreach (object subject in ViewData.Values)
+            {
+                Subject subjectRender = new Subject();
+                if (subject is Subject)
+                    subjectRender = (Subject)subject;
+                else
+                    continue;
+                <option value="@subjectRender.Id">@subjectRender.Label</option>
+            }
+        }
+    </select>
