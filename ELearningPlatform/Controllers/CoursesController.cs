@@ -89,6 +89,8 @@ namespace ELearningPlatform.Controllers
         [HttpGet]
         public String GetIdCourseBySubject(int IdSubject)
         {
+            if (IdSubject == 0)
+                return "0";
             return JsonConvert.SerializeObject(_coursesData.GetCoursesBySubject(IdSubject));
         }
         

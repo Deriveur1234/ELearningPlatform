@@ -30,12 +30,20 @@ namespace ELearningPlatform.Data
 
         public List<int> GetCompletedModule(int IdCourse, int IdUser)
         {
-            List<Module> modules = _context.Module.Where(m => m.IdCourse == IdCourse).ToList();
             List<int> completedModules = new List<int>();
-            foreach(Module module in modules)
+            try
             {
-                if (_context.Completed.Where(e => e.IdModule == module.Id && e.IdUser == IdUser).ToList().Count() > 0)
-                    completedModules.Add(module.Id);
+                List<Module> modules = _context.Module.Where(m => m.IdCourse == IdCourse).ToList();
+                
+                foreach (Module module in modules)
+                {
+                    if (_context.Completed.Where(e => e.IdModule == module.Id && e.IdUser == IdUser).ToList().Count() > 0)
+                        completedModules.Add(module.Id);
+                }
+            }
+            catch
+            {
+                return null;
             }
             return completedModules;
         }

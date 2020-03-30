@@ -17,6 +17,7 @@ namespace ELearningPlatform.Data
         public const string ViewDataDesc = "_Desc";
         public const string ViewDataCreationDate = "_CreationDate";
         public const string ViewDataIco = "_Ico";
+        public const string ViewDataIdSubject = "_IdSubject";
 
         public CoursesData(ELearningPlatformContext context)
         {

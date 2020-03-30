@@ -91,7 +91,7 @@
             int i = 0;
             foreach (Course course in allCourses)
             {
-                ViewDataDictionary courseValue = new ViewDataDictionary(ViewData) { { ViewDataId, course.Id }, { ViewDataName, course.Name }, { ViewDataDesc, course.Desc }, { ViewDataIco, course.Ico } };
+                ViewDataDictionary courseValue = new ViewDataDictionary(ViewData) { { ViewDataId, course.Id }, { ViewDataName, course.Name }, { ViewDataDesc, course.Desc }, { ViewDataIco, course.Ico }, { ViewDataIdSubject, course.IdSubject } };
                 await Html.RenderPartialAsync("Course", courseValue);
                 if (i >= 2)
                 {

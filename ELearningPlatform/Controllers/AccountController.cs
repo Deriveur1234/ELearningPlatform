@@ -136,7 +136,7 @@ namespace ELearningPlatform.Controllers
             else
             {
                 _context.User.Add(newUser);
-                await _context.SaveChangesAsync();
+                _context.SaveChanges();
                 _context.Entry(newUser).GetDatabaseValues();
                 SendActivationMail(newUser.Email, CreateToken(newUser).Code);
             }
@@ -227,7 +227,7 @@ namespace ELearningPlatform.Controllers
             t.ValidateTill = DateTime.Now.AddDays(1f);
             t.Code = GenerateCode();
             _context.Token.Add(t);
-            _context.SaveChangesAsync();
+            _context.SaveChanges();
             return t;
         }
 

@@ -1,20 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lburnand\\Documents\\GitHub\\ELearningPlatform\\ELearningPlatform\\ELearningPlatform.csproj": {}
+    "C:\\Users\\Loic\\Documents\\GitHub\\ELearningPlatform\\ELearningPlatform\\ELearningPlatform.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lburnand\\Documents\\GitHub\\ELearningPlatform\\ELearningPlatform\\ELearningPlatform.csproj": {
+    "C:\\Users\\Loic\\Documents\\GitHub\\ELearningPlatform\\ELearningPlatform\\ELearningPlatform.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lburnand\\Documents\\GitHub\\ELearningPlatform\\ELearningPlatform\\ELearningPlatform.csproj",
+        "projectUniqueName": "C:\\Users\\Loic\\Documents\\GitHub\\ELearningPlatform\\ELearningPlatform\\ELearningPlatform.csproj",
         "projectName": "ELearningPlatform",
-        "projectPath": "C:\\Users\\lburnand\\Documents\\GitHub\\ELearningPlatform\\ELearningPlatform\\ELearningPlatform.csproj",
-        "packagesPath": "C:\\Users\\lburnand\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lburnand\\Documents\\GitHub\\ELearningPlatform\\ELearningPlatform\\obj\\",
+        "projectPath": "C:\\Users\\Loic\\Documents\\GitHub\\ELearningPlatform\\ELearningPlatform\\ELearningPlatform.csproj",
+        "packagesPath": "C:\\Users\\Loic\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Loic\\Documents\\GitHub\\ELearningPlatform\\ELearningPlatform\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\lburnand\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Loic\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -27,8 +30,8 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
-              "C:\\Users\\lburnand\\Documents\\GitHub\\ELearningPlatform\\EmailService\\EmailService.csproj": {
-                "projectPath": "C:\\Users\\lburnand\\Documents\\GitHub\\ELearningPlatform\\EmailService\\EmailService.csproj"
+              "C:\\Users\\Loic\\Documents\\GitHub\\ELearningPlatform\\EmailService\\EmailService.csproj": {
+                "projectPath": "C:\\Users\\Loic\\Documents\\GitHub\\ELearningPlatform\\EmailService\\EmailService.csproj"
               }
             }
           }
@@ -91,21 +94,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\lburnand\\Documents\\GitHub\\ELearningPlatform\\EmailService\\EmailService.csproj": {
+    "C:\\Users\\Loic\\Documents\\GitHub\\ELearningPlatform\\EmailService\\EmailService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lburnand\\Documents\\GitHub\\ELearningPlatform\\EmailService\\EmailService.csproj",
+        "projectUniqueName": "C:\\Users\\Loic\\Documents\\GitHub\\ELearningPlatform\\EmailService\\EmailService.csproj",
         "projectName": "EmailService",
-        "projectPath": "C:\\Users\\lburnand\\Documents\\GitHub\\ELearningPlatform\\EmailService\\EmailService.csproj",
-        "packagesPath": "C:\\Users\\lburnand\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lburnand\\Documents\\GitHub\\ELearningPlatform\\EmailService\\obj\\",
+        "projectPath": "C:\\Users\\Loic\\Documents\\GitHub\\ELearningPlatform\\EmailService\\EmailService.csproj",
+        "packagesPath": "C:\\Users\\Loic\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Loic\\Documents\\GitHub\\ELearningPlatform\\EmailService\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "C:\\Users\\lburnand\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Loic\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -149,7 +155,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.200\\RuntimeIdentifierGraph.json"
         }
       }
     }
