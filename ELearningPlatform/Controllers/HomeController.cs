@@ -50,6 +50,11 @@ namespace ELearningPlatform.Controllers
             return View("ForgotPassword");
         }
 
+        public IActionResult Listing()
+        {
+            return RedirectToAction("ListAllSubjects", "Subjects");
+        }
+
         [HttpGet]
         public IActionResult ResetPassword(string Code)
         {

@@ -1,0 +1,64 @@
+﻿@model IEnumerable<ELearningPlatform.Models.Module>
+@using static ELearningPlatform.Data.TempDataHelper 
+@{
+    ViewData["Title"] = "ListModule";
+    List<Module> modules = new List<Module>();
+    if (TempData[TempdataKeyModules] != null)
+        modules = (List<Module>)TempData[TempdataKeyModules];
+}
+
+<div class="container mt-2">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a class="black-text" href="#">Subjects</a>
+            <i class="fa fa-angle-right mx-2" aria-hidden="true"></i>
+        </li>
+        <li class="breadcrumb-item">
+            <a class="black-text" href="#">Courses</a>
+            <i class="fa fa-angle-right mx-2" aria-hidden="true"></i>
+        </li>
+    </ol>
+    <hr />
+</div>
+<div class="container mt-5">
+
+    <form method="get" asp-controller="Modules" asp-action="AddModule" class="form">
+        <div class="row">
+            <div class="col-md-12">
+                <button class="btn btn-primary btn-sm">
+                    <i class="fa fa-plus mr-1"></i> Add Module
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h6 class="mb-4 mt-4">Modules</h6>
+            <table class="table table-hover table-responsive-md">
+                <tbody>
+                    @foreach (Module module in modules)
+                    {
+                        <tr>
+                            <td>
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                                <a href="/ModuleUpdate?id=@module.Id">@module.Label</a>
+                            </td>
+                            <td class="text-right dropleft">
+                                <div class="btn-icon-dropdown-toggle" data-toggle="dropdown" id="tableDropdownLink-1" aria-haspopup="true" aria-expanded="true">
+                                    <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                    <div class="dropdown-menu" aria-labelledby="tableDropdownLink-1">
+                                        <a class="dropdown-item" href="#">Edit</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Delete</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>

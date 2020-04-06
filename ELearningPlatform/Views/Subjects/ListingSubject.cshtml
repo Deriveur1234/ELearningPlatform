@@ -1,0 +1,77 @@
+﻿@model ELearningPlatform.Models.Subject
+@using static ELearningPlatform.Data.TempDataHelper
+@{
+    ViewData["Title"] = "ListingSubject";
+    List<Subject> subjects = new List<Subject>();
+    int[] nbCoursesBySubject = null;
+    if (TempData[TempdataKeySubjects] != null)
+        subjects = (List<Subject>)TempData[TempdataKeySubjects];
+    if (TempData[TempdataKeyNbCoursesBySubject] != null)
+        nbCoursesBySubject = (int[])TempData[TempdataKeyNbCoursesBySubject];
+
+    int CountLoop = 0;
+}
+
+<div class="container mt-2">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a class="black-text" href="#">Subjects</a>
+            <i class="fa fa-angle-right mx-2" aria-hidden="true"></i>
+        </li>
+    </ol>
+    <hr />
+</div>
+<div class="container mt-5">
+
+    <form method="get" asp-controller="Subjects" asp-action="AddSubject" class="form">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="md-form">
+                    <input asp-for="Label" type="text" name="SubjectLabel" id="SubjectLabel" class="form-control" placeholder="Choose the best subject name">
+                </div>
+            </div>
+            <div class="col-md-4 with-plain-btn">
+                <button class="btn btn-primary btn-sm" type="submit">
+                    <i class="fa fa-save mr-1"></i> Save
+                </button>
+                <button class="btn btn-primary btn-sm">
+                    <i class="fa fa-ban mr-1"></i> Cancel
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <div class="row">
+        <div class="col-md-12">
+            <h6 class="mb-4 mt-4">Subjects</h6>
+            <table class="table table-hover table-responsive-md">
+                <tbody>
+                    @foreach (Subject subject in subjects)
+                    {
+                        <tr>
+                            <td>
+                                <i class="fa fa-check" aria-hidden="true"></i>
+                                <a href="/Listing?id=@subject.Id">@subject.Label</a>
+                            </td>
+                            <td class="text-right">@nbCoursesBySubject[CountLoop] Courses</td>
+                            <td class="text-right dropleft">
+                                <div class="btn-icon-dropdown-toggle" data-toggle="dropdown" id="tableDropdownLink-1" aria-haspopup="true" aria-expanded="true">
+                                    <i class="fa fa-ellipsis-v" aria-hidden="true"></i>
+                                    <div class="dropdown-menu" aria-labelledby="tableDropdownLink-1">
+                                        <a class="dropdown-item" href="#">Edit</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="#">Delete</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+
+                        CountLoop++;
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+

@@ -19,5 +19,23 @@ namespace ELearningPlatform.Data
         {
             return _context.Subject.ToList();
         }
+
+        public int NbCoursesBySubject(int Id)
+        {
+            return _context.Course.Where(e => e.IdSubject == Id).Count();
+        }
+
+        public bool AddSubject(string Label)
+        {
+            Subject subject = new Subject();
+            subject.Label = Label;
+            try
+            {
+                _context.Subject.Add(subject);
+                _context.SaveChanges();
+            }
+            catch { return false; }
+            return true;
+        }
     }
 }

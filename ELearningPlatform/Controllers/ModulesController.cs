@@ -42,6 +42,15 @@ namespace ELearningPlatform.Controllers
             return View("ModuleDetails");
         }
 
+        [Route("ModuleListing")]
+        [HttpGet]
+        public IActionResult ModuleListingByCourse(int id)
+        {
+            List<Module> modules = _moduleData.GetModulesCourse(id);
+            TempData[TempDataHelper.TempdataKeyModules] = modules;
+            return View("ListModule");
+        }
+
         [Route("CompleteModule")]
         [HttpGet]
         public IActionResult CompleteModule(int id)

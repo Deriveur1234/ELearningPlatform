@@ -21,6 +21,7 @@ namespace ELearningPlatform.Data
         public const string TempdataKeyInscriptionCourse = "_CourseInscripted";
         public const string TempdataKeyCourse = "_Course";
         public const string TempdataKeyIsEnrolled = "_IsEnrolled";
+        public const string TempdataKeyNbModuleByCourse = "_NbModuleByCourse";
 
         //Modules TempData Key
         public const string TempdataKeyModules = "_Modules";
@@ -33,6 +34,7 @@ namespace ELearningPlatform.Data
 
         //Subject TempData Key
         public const string TempdataKeySubjects = "_Subjects";
+        public const string TempdataKeyNbCoursesBySubject = "_NbCoursesBySubject";
 
     }
 }

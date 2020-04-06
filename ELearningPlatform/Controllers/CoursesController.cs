@@ -93,6 +93,23 @@ namespace ELearningPlatform.Controllers
                 return "0";
             return JsonConvert.SerializeObject(_coursesData.GetCoursesBySubject(IdSubject));
         }
-        
+
+        [Route("Listing")]
+        [HttpGet]
+        public IActionResult ListCoursesBySubject(int id)
+        {
+            List<Course> courses = _coursesData.GetCoursesBySubject(id);
+            int[] nbModuleByCourse = new int[courses.Count()];
+            int i = 0;
+            foreach (Course course in courses)
+            {
+                nbModuleByCourse[i] = _coursesData.GetNbModulesByCourse(course.Id);
+                i++;
+            }
+            TempData[TempDataHelper.TempdataKeyAllCourses] = courses;
+            TempData[TempDataHelper.TempdataKeyNbModuleByCourse] = nbModuleByCourse;
+            return View("CoursesListing");
+        }
+
     }
 }

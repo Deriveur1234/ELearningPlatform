@@ -87,6 +87,11 @@ namespace ELearningPlatform.Data
             return true;
         }
 
+        public int GetNbModulesByCourse(int Id)
+        {
+            return _context.Module.Where(e => e.IdCourse == Id).Count();
+        }
+
         public bool isEnrolled(int IdCourse, int IdUser)
         {
             return (_context.Inscription.Where(e => e.IdCourse == IdCourse && e.IdUser == IdUser).Count() > 0);
