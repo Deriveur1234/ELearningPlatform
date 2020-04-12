@@ -43,7 +43,7 @@
           "dependencies": {
             "MailKit": {
               "target": "Package",
-              "version": "[2.5.1, )"
+              "version": "[2.6.0, )"
             }
           },
           "imports": [

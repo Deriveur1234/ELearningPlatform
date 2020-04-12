@@ -27,6 +27,13 @@ using ELearningPlatform.Models;
 #line hidden
 #nullable disable
 #nullable restore
+#line 3 "C:\Users\Loic\Documents\GitHub\ELearningPlatform\ELearningPlatform\Views\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Identity;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 2 "C:\Users\Loic\Documents\GitHub\ELearningPlatform\ELearningPlatform\Views\Courses\Course.cshtml"
 using static ELearningPlatform.Data.CoursesData;
 
@@ -34,7 +41,7 @@ using static ELearningPlatform.Data.CoursesData;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1f8a2a531af6c666d5ed8e0e4ced938d706ca730", @"/Views/Courses/Course.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b61e4660f27ef6e4d4afdfcd7161c09242d38a53", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e3081f39eae504873096168130ab2136a2bf59d2", @"/Views/_ViewImports.cshtml")]
     public class Views_Courses_Course : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<ELearningPlatform.Models.Course>
     {
         #pragma warning disable 1998

@@ -11,6 +11,7 @@ using System.Security.Cryptography;
 using Microsoft.AspNetCore.Http;
 using System.Text;
 using EmailService;
+using Microsoft.AspNetCore.Identity;
 
 namespace ELearningPlatform.Controllers
 {
@@ -20,14 +21,19 @@ namespace ELearningPlatform.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ELearningPlatformContext _context;
+        private readonly UserManager<IdentityUser> userManager;
+        private readonly SignInManager<IdentityUser> signInManager;
         private readonly UsersData usersData;
         private readonly EmailSender _emailSender;
         private static Random r = new Random();
 
-        public AccountController(ILogger<HomeController> logger, ELearningPlatformContext context, EmailConfiguration emailConfiguration)
+        public AccountController(ILogger<HomeController> logger, ELearningPlatformContext context, EmailConfiguration emailConfiguration,
+                                    UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
             _logger = logger;
             _context = context;
+            this.userManager = userManager;
+            this.signInManager = signInManager;
             usersData = new UsersData(_context);
             _emailSender = new EmailSender(emailConfiguration);
             
@@ -90,16 +96,16 @@ namespace ELearningPlatform.Controllers
                 return View("Login");
             User user = new User();
             user.Username = Username;
-            user.Password = GetSha1(Password);
-            if (usersData.CheckLogin(user))
+            // signin with Identity framework (cookie session only, for now)
+            var result = await signInManager.PasswordSignInAsync(Username, Password, false, false);
+            if ( result.Succeeded)
             {
+                // Search the info of the user in the database
                 user = usersData.GetUserByUsername(user.Username);
                 if (!user.IsConfirmed)
                 {
                     return View("ResendEmail");
                 }
-                // dont want to stock the password in session even if hashed
-                user.Password = null;
                 // Put in session an serialized object User 
                 SessionHelper.Set<User>(HttpContext.Session, SessionHelper.SessionKeyUser, user);
                 return RedirectToAction("Index", "home");
@@ -115,6 +121,7 @@ namespace ELearningPlatform.Controllers
         {
             SessionHelper.Set<User>(HttpContext.Session, SessionHelper.SessionKeyUser, null);
             TempData[TempDataHelper.TempdataKeyIsConnected] = null;
+            await signInManager.SignOutAsync();
             return RedirectToAction("Index", "home");
         }
 
@@ -127,7 +134,6 @@ namespace ELearningPlatform.Controllers
             newUser.IsConfirmed = false;
             newUser.Username = Username;
             newUser.Email = Email;
-            newUser.Password = GetSha1(Password);
             if(EmailExists(newUser.Email) || UsernameExists(newUser.Username))
             {
                 TempData[TempDataHelper.TempdataKeyErrorMessage] = "Email or username already exist";
@@ -135,10 +141,15 @@ namespace ELearningPlatform.Controllers
             }
             else
             {
-                _context.User.Add(newUser);
-                _context.SaveChanges();
-                _context.Entry(newUser).GetDatabaseValues();
-                SendActivationMail(newUser.Email, CreateToken(newUser).Code);
+                var userIdentity = new IdentityUser { UserName = newUser.Username, Email = newUser.Email, EmailConfirmed = false };
+                var result = await userManager.CreateAsync(userIdentity, Password);
+                if (result.Succeeded)
+                {
+                    _context.User.Add(newUser);
+                    _context.SaveChanges();
+                    _context.Entry(newUser).GetDatabaseValues();
+                    SendActivationMail(newUser.Email, CreateToken(newUser).Code);
+                }
             }
             return RedirectToAction("Index", "home");
         }

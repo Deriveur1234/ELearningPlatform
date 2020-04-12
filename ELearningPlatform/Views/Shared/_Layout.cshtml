@@ -1,4 +1,5 @@
 ﻿@using ELearningPlatform.Data
+@inject SignInManager<IdentityUser> signInManager
 @{ 
     if (TempData[TempDataHelper.TempdataKeyUserName] == null)
     {
@@ -38,7 +39,7 @@
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav ml-auto nav-flex-icons">
                         <li class="nav-item profile-group">
-                            <span class="profile name">@TempData[TempDataHelper.TempdataKeyUserName]</span>
+                            <span class="profile name">@User.Identity.Name</span>
                             <span class="profile type">@TempData[TempDataHelper.TempdataKeyUserRole]</span>
                         </li>
                         <li class="nav-item avatar dropdown">
@@ -47,7 +48,7 @@
                                 <img src="https://mdbootstrap.com/img/Photos/Avatars/avatar-2.jpg" class="rounded-circle z-depth-0" alt="avatar image">
                             </a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-secondary" aria-labelledby="navbarDropdownMenuLink-5">
-                                @if (TempData[TempDataHelper.TempdataKeyIsConnected] == null)
+                                @if (!signInManager.IsSignedIn(User))
                                 {
                                     <a asp-controller="Home" asp-action="Login" class="dropdown-item waves-effect waves-light">Login</a>
                                     <a asp-controller="Home" asp-action="SignUp" class="dropdown-item waves-effect waves-light">SignUp</a>

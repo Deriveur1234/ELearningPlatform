@@ -527,8 +527,14 @@ C:\Users\Loic\Documents\GitHub\ELearningPlatform\ELearningPlatform\obj\Debug\net
 C:\Users\Loic\Documents\GitHub\ELearningPlatform\ELearningPlatform\obj\Debug\netcoreapp3.1\ELearningPlatform.pdb
 C:\Users\Loic\Documents\GitHub\ELearningPlatform\ELearningPlatform\obj\Debug\netcoreapp3.1\ELearningPlatform.genruntimeconfig.cache
 C:\Users\Loic\Documents\GitHub\ELearningPlatform\ELearningPlatform\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
-C:\Users\Loic\Documents\GitHub\ELearningPlatform\ELearningPlatform\obj\Debug\netcoreapp3.1\ELearningPlatform.csproj.CoreCompileInputs.cache
-C:\Users\Loic\Documents\GitHub\ELearningPlatform\ELearningPlatform\obj\Debug\netcoreapp3.1\ELearningPlatform.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Loic\Documents\GitHub\ELearningPlatform\ELearningPlatform\obj\Debug\netcoreapp3.1\Razor\Views\Subjects\ListingSubject.cshtml.g.cs
 C:\Users\Loic\Documents\GitHub\ELearningPlatform\ELearningPlatform\obj\Debug\netcoreapp3.1\Razor\Views\Courses\CoursesListing.cshtml.g.cs
 C:\Users\Loic\Documents\GitHub\ELearningPlatform\ELearningPlatform\obj\Debug\netcoreapp3.1\Razor\Views\Modules\ListModule.cshtml.g.cs
+C:\Users\Loic\Documents\GitHub\ELearningPlatform\ELearningPlatform\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+C:\Users\Loic\Documents\GitHub\ELearningPlatform\ELearningPlatform\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\Loic\Documents\GitHub\ELearningPlatform\ELearningPlatform\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\Loic\Documents\GitHub\ELearningPlatform\ELearningPlatform\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\Loic\Documents\GitHub\ELearningPlatform\ELearningPlatform\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+C:\Users\Loic\Documents\GitHub\ELearningPlatform\ELearningPlatform\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\Loic\Documents\GitHub\ELearningPlatform\ELearningPlatform\obj\Debug\netcoreapp3.1\ELearningPlatform.csproj.CoreCompileInputs.cache
+C:\Users\Loic\Documents\GitHub\ELearningPlatform\ELearningPlatform\obj\Debug\netcoreapp3.1\ELearningPlatform.MvcApplicationPartsAssemblyInfo.cache
