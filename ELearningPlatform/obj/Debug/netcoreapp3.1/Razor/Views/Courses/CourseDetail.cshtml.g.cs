@@ -27,6 +27,13 @@ using ELearningPlatform.Models;
 #line hidden
 #nullable disable
 #nullable restore
+#line 3 "C:\Users\Loic\Documents\GitHub\ELearningPlatform\ELearningPlatform\Views\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Identity;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 2 "C:\Users\Loic\Documents\GitHub\ELearningPlatform\ELearningPlatform\Views\Courses\CourseDetail.cshtml"
 using static ELearningPlatform.Data.TempDataHelper;
 
@@ -34,7 +41,7 @@ using static ELearningPlatform.Data.TempDataHelper;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"99a66c0b236f7a5550b37c3ddb45847a5c857e5c", @"/Views/Courses/CourseDetail.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b61e4660f27ef6e4d4afdfcd7161c09242d38a53", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e3081f39eae504873096168130ab2136a2bf59d2", @"/Views/_ViewImports.cshtml")]
     public class Views_Courses_CourseDetail : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<ELearningPlatform.Models.Course>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("class", new global::Microsoft.AspNetCore.Html.HtmlString("black-text"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -90,7 +97,7 @@ using static ELearningPlatform.Data.TempDataHelper;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n<div class=\"container mt-2\">\r\n    <ol class=\"breadcrumb\">\r\n        <li class=\"breadcrumb-item\">\r\n            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "99a66c0b236f7a5550b37c3ddb45847a5c857e5c5397", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "99a66c0b236f7a5550b37c3ddb45847a5c857e5c5608", async() => {
                 WriteLiteral("Courses");
             }
             );
