@@ -4,11 +4,10 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ELearningPlatform.Models;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace ELearningPlatform.Data
 {
-    public class ELearningPlatformContext : IdentityDbContext
+    public class ELearningPlatformContext : DbContext
     {
         public ELearningPlatformContext (DbContextOptions<ELearningPlatformContext> options)
             : base(options)

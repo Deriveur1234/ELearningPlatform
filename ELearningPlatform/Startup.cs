@@ -14,7 +14,8 @@ using ELearningPlatform.Controllers;
 using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Http;
 using EmailService;
-using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 namespace ELearningPlatform
 {
@@ -59,14 +60,10 @@ namespace ELearningPlatform
 
             services.AddScoped<Session>();
 
-            services.AddIdentity<IdentityUser, IdentityRole>()
-                .AddEntityFrameworkStores<ELearningPlatformContext>();
+            services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+                .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options => Configuration.Bind("JwtSettings", options))
+                .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options => Configuration.Bind("CookieSettings", options));
 
-            services.Configure<IdentityOptions>(options =>
-            {
-                options.Password.RequireNonAlphanumeric = false;
-            });
-            
             services.Configure<RazorViewEngineOptions>(o =>
             {
                 o.ViewLocationFormats.Clear();
@@ -108,10 +105,8 @@ namespace ELearningPlatform
 
             app.UseRouting();
 
-            
-            app.UseAuthentication();
-
             app.UseAuthorization();
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute(

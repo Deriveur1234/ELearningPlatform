@@ -26,15 +26,8 @@ using ELearningPlatform.Models;
 #line default
 #line hidden
 #nullable disable
-#nullable restore
-#line 3 "C:\Users\Loic\Documents\GitHub\ELearningPlatform\ELearningPlatform\Views\_ViewImports.cshtml"
-using Microsoft.AspNetCore.Identity;
-
-#line default
-#line hidden
-#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ffe9991aa11bb62b534122c65ed55fb7f2ccba02", @"/Views/Shared/Filter.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e3081f39eae504873096168130ab2136a2bf59d2", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b61e4660f27ef6e4d4afdfcd7161c09242d38a53", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_Filter : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("value", "0", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -63,7 +56,7 @@ using Microsoft.AspNetCore.Identity;
         public async override global::System.Threading.Tasks.Task ExecuteAsync()
         {
             WriteLiteral("    <select class=\"browser-default custom-select\" id=\"Select-Subject\">\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ffe9991aa11bb62b534122c65ed55fb7f2ccba023713", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ffe9991aa11bb62b534122c65ed55fb7f2ccba023502", async() => {
                 WriteLiteral("Show all subjects");
             }
             );
@@ -97,7 +90,7 @@ using Microsoft.AspNetCore.Identity;
 #line hidden
 #nullable disable
             WriteLiteral("                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ffe9991aa11bb62b534122c65ed55fb7f2ccba025704", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ffe9991aa11bb62b534122c65ed55fb7f2ccba025493", async() => {
 #nullable restore
 #line 11 "C:\Users\Loic\Documents\GitHub\ELearningPlatform\ELearningPlatform\Views\Shared\Filter.cshtml"
                                              Write(subjectRender.Label);

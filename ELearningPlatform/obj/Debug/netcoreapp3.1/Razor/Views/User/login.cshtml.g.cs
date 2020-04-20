@@ -27,13 +27,6 @@ using ELearningPlatform.Models;
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\Loic\Documents\GitHub\ELearningPlatform\ELearningPlatform\Views\_ViewImports.cshtml"
-using Microsoft.AspNetCore.Identity;
-
-#line default
-#line hidden
-#nullable disable
-#nullable restore
 #line 2 "C:\Users\Loic\Documents\GitHub\ELearningPlatform\ELearningPlatform\Views\User\login.cshtml"
 using static ELearningPlatform.Data.TempDataHelper;
 
@@ -41,7 +34,7 @@ using static ELearningPlatform.Data.TempDataHelper;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"bf5598f819314f45e520b1dde9d46b89d3b458af", @"/Views/User/login.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e3081f39eae504873096168130ab2136a2bf59d2", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"b61e4660f27ef6e4d4afdfcd7161c09242d38a53", @"/Views/_ViewImports.cshtml")]
     public class Views_User_login : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<ELearningPlatform.Models.User>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("type", "text", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -95,7 +88,7 @@ using static ELearningPlatform.Data.TempDataHelper;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bf5598f819314f45e520b1dde9d46b89d3b458af8615", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bf5598f819314f45e520b1dde9d46b89d3b458af8404", async() => {
                 WriteLiteral("\r\n    <div class=\"card mb-2\">\r\n        <div class=\"card-body\">\r\n");
 #nullable restore
 #line 11 "C:\Users\Loic\Documents\GitHub\ELearningPlatform\ELearningPlatform\Views\User\login.cshtml"
@@ -121,7 +114,7 @@ using static ELearningPlatform.Data.TempDataHelper;
 #line hidden
 #nullable disable
                 WriteLiteral("            <div class=\"md-form\">\r\n                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "bf5598f819314f45e520b1dde9d46b89d3b458af9820", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "bf5598f819314f45e520b1dde9d46b89d3b458af9609", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();
@@ -148,7 +141,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                <label for=\"Username\">Username</label>\r\n            </div>\r\n            <div class=\"md-form\">\r\n                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "bf5598f819314f45e520b1dde9d46b89d3b458af12050", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "bf5598f819314f45e520b1dde9d46b89d3b458af11839", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();
@@ -175,7 +168,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                <label for=\"Password\">Password</label>\r\n            </div>\r\n            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bf5598f819314f45e520b1dde9d46b89d3b458af14241", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bf5598f819314f45e520b1dde9d46b89d3b458af14030", async() => {
                     WriteLiteral("oops, I forgot my password");
                 }
                 );
@@ -201,7 +194,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
         <input type=""submit"" class=""btn btn-default btn-sm mb-3 btn-block"" value=""Login"" />
         <span class=""small-link"">Don't have an account?</span>
         ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bf5598f819314f45e520b1dde9d46b89d3b458af16140", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bf5598f819314f45e520b1dde9d46b89d3b458af15929", async() => {
                     WriteLiteral("Sign up");
                 }
                 );

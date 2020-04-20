@@ -1,14 +1,14 @@
 {
   "version": 2,
-  "dgSpecHash": "TWnXIw1mtXKVKmyVVTs9RTWI4LTRTfXSJgnP7PVzxl7GQR760x+D1h5Lneqqq4M90OXf0wUuTHtzYNsd1kxf9Q==",
+  "dgSpecHash": "/Z/U44sCUsxiDxUv5f88J8Ojwb6pa5yudWameRrVK+BjmV4Jlle4EmRTOY+ldycuuqFqEbwMfxsMFjjIwTolEQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\Loic\\Documents\\GitHub\\ELearningPlatform\\EmailService\\EmailService.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Loic\\.nuget\\packages\\mailkit\\2.6.0\\mailkit.2.6.0.nupkg.sha512",
+    "C:\\Users\\Loic\\.nuget\\packages\\mailkit\\2.5.1\\mailkit.2.5.1.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\microsoft.win32.primitives\\4.3.0\\microsoft.win32.primitives.4.3.0.nupkg.sha512",
-    "C:\\Users\\Loic\\.nuget\\packages\\mimekit\\2.6.0\\mimekit.2.6.0.nupkg.sha512",
+    "C:\\Users\\Loic\\.nuget\\packages\\mimekit\\2.5.1\\mimekit.2.5.1.nupkg.sha512",
     "C:\\Users\\Loic\\.nuget\\packages\\portable.bouncycastle\\1.8.5\\portable.bouncycastle.1.8.5.nupkg.sha512",
     "C:\\Users\\Loic\\.nuget\\packages\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.debian.8-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
     "C:\\Users\\Loic\\.nuget\\packages\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl\\4.3.2\\runtime.fedora.23-x64.runtime.native.system.security.cryptography.openssl.4.3.2.nupkg.sha512",
