@@ -10,6 +10,7 @@ using Microsoft.Extensions.Logging;
 using System.Security.Cryptography;
 using Microsoft.AspNetCore.Http;
 using System.Text;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ELearningPlatform.Controllers
 {
@@ -27,6 +28,7 @@ namespace ELearningPlatform.Controllers
         }
 
         [Route("Listing")]
+        [Authorize]
         public IActionResult ListAllSubjects()
         {
             List<Subject> subjects = _subjectData.GetAllSubjects();
@@ -43,6 +45,7 @@ namespace ELearningPlatform.Controllers
         }
 
         [Route("AddSubject")]
+        [Authorize]
         public IActionResult AddSubject(string SubjectLabel)
         {
             if (SubjectLabel != null)

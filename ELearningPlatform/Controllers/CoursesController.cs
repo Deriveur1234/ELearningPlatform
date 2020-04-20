@@ -8,36 +8,43 @@ using ELearningPlatform.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace ELearningPlatform.Controllers
 {
     public class CoursesController : Controller
     {
         private readonly ELearningPlatformContext _context;
+        private readonly SignInManager<IdentityUser> signInManager;
+        private readonly UserManager<IdentityUser> userManager;
         private readonly CoursesData _coursesData;
         private readonly UsersData _usersData;
         private readonly ModuleData _moduleData;
         private readonly SubjectData _subjectData;
+        
 
-        public CoursesController(ELearningPlatformContext context)
+        public CoursesController(ELearningPlatformContext context, SignInManager<IdentityUser> signInManager, UserManager<IdentityUser> userManager)
         {
             _context = context;
+            this.signInManager = signInManager;
+            this.userManager = userManager;
             _coursesData = new CoursesData(_context);
-            _usersData = new UsersData(_context);
+            _usersData = new UsersData(_context, this.userManager);
             _moduleData = new ModuleData(_context);
             _subjectData = new SubjectData(_context);
         }
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             User user = SessionHelper.Get<User>(HttpContext.Session, SessionHelper.SessionKeyUser);
             if (user != null)
             {
-                List<int> coursesId = _coursesData.GetSubscribedCourseId(user.Id);
+                List<int> coursesId = _coursesData.GetSubscribedCourseId(User.Identity.Name);
                 TempData[TempDataHelper.TempdataKeyInscriptionCourse] = coursesId;
                 TempData[TempDataHelper.TempdataKeyIsConnected] = true;
                 TempData[TempDataHelper.TempdataKeyUserName] = user.Username;
-                TempData[TempDataHelper.TempdataKeyUserRole] = _usersData.GetRoleName(user.IdCode);
             }
             TempData[TempDataHelper.TempdataKeyAllCourses] = _coursesData.GetAllCourses();
             TempData[TempDataHelper.TempdataKeySubjects] = _subjectData.GetAllSubjects();
@@ -46,17 +53,18 @@ namespace ELearningPlatform.Controllers
 
         [Route("CourseDetails")]
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult CourseDetails(int id)
         {
             TempData[TempDataHelper.TempdataKeyCourse] = _coursesData.GetCourseById(id);
             User user = SessionHelper.Get<User>(HttpContext.Session, SessionHelper.SessionKeyUser);
             if(user != null)
             {
-                TempData[TempDataHelper.TempdataKeyIsEnrolled] = _coursesData.isEnrolled(id, user.Id);
+                TempData[TempDataHelper.TempdataKeyIsEnrolled] = _coursesData.isEnrolled(id, User.Identity.Name);
                 TempData[TempDataHelper.TempdataKeyIsConnected] = true;
                 TempData[TempDataHelper.TempdataKeyUserName] = user.Username;
                 TempData[TempDataHelper.TempdataKeyUserRole] = _usersData.GetRoleName(user.IdCode);
-                TempData[TempDataHelper.TempdataKeyCompletedModule] = _moduleData.GetCompletedModule(id, user.Id);
+                TempData[TempDataHelper.TempdataKeyCompletedModule] = _moduleData.GetCompletedModule(id, User.Identity.Name);
             }
             else
             {
@@ -72,11 +80,11 @@ namespace ELearningPlatform.Controllers
         [HttpGet]
         public IActionResult EnrollCourse(int id)
         {
-            User user = SessionHelper.Get<User>(HttpContext.Session, SessionHelper.SessionKeyUser);
-            if(user != null && id != 0)
+            var userName = User.Identity.Name;
+            if(!string.IsNullOrEmpty(userName) && id != 0)
             {
                 Inscription inscription = new Inscription();
-                inscription.IdUser = user.Id;
+                inscription.IdUser = _usersData.GetUserByUsername(userName).Id.ToString();
                 inscription.IdCourse = id;
                 if (_coursesData.addInscription(inscription))
                     return CourseDetails(id);

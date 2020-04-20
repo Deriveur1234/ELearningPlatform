@@ -10,7 +10,7 @@ namespace ELearningPlatform.Models
         public int Id { get; set; }
         public int IdCourse { get; set; }
         public string Label { get; set; }
-        public int IdInstructor { get; set; }
+        public string IdInstructor { get; set; }
         public DateTime CreationDate { get; set; }
     }
 }

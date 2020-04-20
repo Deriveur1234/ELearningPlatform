@@ -9,6 +9,6 @@ namespace ELearningPlatform.Models
     {
         public int Id { get; set; }
         public int IdModule { get; set; }
-        public int IdUser { get; set; }
+        public string IdUser { get; set; }
     }
 }

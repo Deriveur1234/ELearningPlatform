@@ -5,6 +5,7 @@
     ViewData["Title"] = "Home Page";
     List<Course> allCourses = new List<Course>();
     List<Subject> subjects = new List<Subject>();
+    List<int> inscriptedCourse = new List<int>();
     if (TempData[TempdataKeyAllCourses] == null)
         allCourses = new List<Course>();
     else
@@ -12,6 +13,9 @@
 
     if (TempData[TempdataKeySubjects] != null)
         subjects = (List<Subject>)TempData[TempdataKeySubjects];
+
+    if (TempData[TempdataKeyInscriptionCourse] != null)
+        inscriptedCourse = (List<int>)TempData[TempdataKeyInscriptionCourse];
 
     if (TempData[TempdataKeyIsConnected] != null && (bool)TempData[TempdataKeyIsConnected] == true)
     {
@@ -46,7 +50,7 @@
                 @{
                     int b = 0;
                     List<Course> coursesInscripted = new List<Course>();
-                    foreach (int idCourse in (List<int>)TempData[TempdataKeyInscriptionCourse])
+                    foreach (int idCourse in inscriptedCourse)
                     {
                         var course = allCourses.Find(e => e.Id == idCourse);
                         ViewDataDictionary courseValue = new ViewDataDictionary(ViewData) { { ViewDataId, course.Id }, { ViewDataName, course.Name }, { ViewDataDesc, course.Desc }, { ViewDataIco, course.Ico } };

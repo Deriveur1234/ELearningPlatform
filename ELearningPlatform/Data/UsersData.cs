@@ -7,34 +7,27 @@ using ELearningPlatform;
 using ELearningPlatform.Models;
 using ELearningPlatform.Data;
 using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Identity;
 
 namespace ELearningPlatform.Data
 {
     public class UsersData
     {
         private ELearningPlatformContext _context;
+        private readonly UserManager<IdentityUser> userManager;
 
-        public UsersData(ELearningPlatformContext context)
+        public UsersData(ELearningPlatformContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
-        }
-
-        /*
-         * @brief Return all users
-         * @return [list<Use>] List of users
-         */
-        public List<User> GetAllUser()
-        {
-            var users = _context.User
-                .ToList();
-
-            return users;
+            this.userManager = userManager;
         }
 
 
+        // still change to user identity framework
         public User GetUserByEmail(string Email)
         {
             var users = _context.User.Where(u => u.Email == Email).ToList();
+            var user = userManager.FindByEmailAsync(Email);
             if (users.Count() > 0)
                 return users[0];
             return null;
@@ -43,27 +36,10 @@ namespace ELearningPlatform.Data
         public User GetUserByUsername(string Username)
         {
             var users = _context.User.Where(u => u.Username == Username).ToList();
+            var user = userManager.FindByNameAsync(Username);
             if (users.Count() > 0)
                 return users[0];
             return null;
-        }
-
-        public User GetUserById(int IdUser)
-        {
-            return _context.User.Find(IdUser);
-        }
-
-        /**
-	     * @brief Retourne true si le password et le nickname sont dans la base
-	     * @param user De type User, doit contenir le username et le password
-	     * @return [bool] Retourne true si l'utilisateur et le password corréspondent
-	     */
-        public bool CheckLogin(User user)
-        {
-            var users = _context.User
-                .Where(u => u.Username == user.Username && u.Password == user.Password)
-                .ToList();
-            return (users.Count > 0);
         }
 
         public int GetIdUserByTokenCode(string TokenCode)

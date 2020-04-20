@@ -8,7 +8,7 @@ namespace ELearningPlatform.Models
     public class Inscription
     {
         public int Id { get; set; }
-        public int IdUser { get; set; }
+        public string IdUser { get; set; }
         public int IdCourse { get; set; }
     }
 }

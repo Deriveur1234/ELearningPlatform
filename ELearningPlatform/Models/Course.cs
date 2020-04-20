@@ -10,7 +10,7 @@ namespace ELearningPlatform.Models
     public class Course
     {
         public int Id { get; set; }
-        public int IdInstructor { get; set; }
+        public string IdInstructor { get; set; }
         public string Name { get; set; }
         public string Ico { get; set; }
         public string Desc { get; set; }

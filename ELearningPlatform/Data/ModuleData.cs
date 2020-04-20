@@ -28,7 +28,7 @@ namespace ELearningPlatform.Data
             return _context.Module.Where(m => m.IdCourse == IdCourse).ToList();
         }
 
-        public List<int> GetCompletedModule(int IdCourse, int IdUser)
+        public List<int> GetCompletedModule(int IdCourse, string IdUser)
         {
             List<int> completedModules = new List<int>();
             try
@@ -48,9 +48,10 @@ namespace ELearningPlatform.Data
             return completedModules;
         }
 
+        //change for identity framework
         public string GetInstructor(int IdModule)
         {
-            return _context.User.Where(e => e.Id == _context.Module.Find(IdModule).IdInstructor).FirstOrDefault().Username;
+            return "";
         }
 
         public IDictionary<int, string> GetInstructorForAllModuleCourse(int idCourse)
@@ -64,7 +65,8 @@ namespace ELearningPlatform.Data
             return InstructorName;
         }
 
-        public bool CompleteModule(int idModule, int idUser)
+        //change to fit with identity framework
+        public bool CompleteModule(int idModule, string idUser)
         {
             Completed completed = new Completed();
             completed.IdModule = idModule;
@@ -86,7 +88,8 @@ namespace ELearningPlatform.Data
             return _context.Content.Where(e => e.idModule == idModule).ToList();
         }
 
-        public bool isFinished(int idModule, int idUser)
+        //change to fit IdentityFramework
+        public bool isFinished(int idModule, string idUser)
         {
             return (_context.Completed.Where(e => e.IdModule == idModule && e.IdUser == idUser).Count() > 0);
         }

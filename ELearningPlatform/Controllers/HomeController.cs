@@ -9,22 +9,27 @@ using Microsoft.Extensions.Logging;
 using ELearningPlatform.Models;
 using ELearningPlatform.Data;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 
 namespace ELearningPlatform.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ELearningPlatformContext _context;
+        private readonly UserManager<IdentityUser> userManager;
         private UsersData usersData;
         private CoursesData coursesData;
 
-        public HomeController(ELearningPlatformContext context)
+        public HomeController(ELearningPlatformContext context, UserManager<IdentityUser> userManager)
         {
             _context = context;
-            usersData = new UsersData(_context);
+            this.userManager = userManager;
+            usersData = new UsersData(_context, this.userManager);
             coursesData = new CoursesData(_context);
         }
 
+        [AllowAnonymous]
         public IActionResult Index()
         {
             return RedirectToAction("Index", "Courses");
@@ -35,16 +40,19 @@ namespace ELearningPlatform.Controllers
             return View();
         }
 
+        [AllowAnonymous]
         public IActionResult Login()
         {
             return View("Login");
         }
 
+        [AllowAnonymous]
         public IActionResult SignUp()
         {
             return View("SignUp");
         }
 
+        [AllowAnonymous]
         public IActionResult ForgotPassword()
         {
             return View("ForgotPassword");
@@ -55,6 +63,7 @@ namespace ELearningPlatform.Controllers
             return RedirectToAction("ListAllSubjects", "Subjects");
         }
 
+        [AllowAnonymous]
         [HttpGet]
         public IActionResult ResetPassword(string Code)
         {

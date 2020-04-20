@@ -22,18 +22,6 @@ namespace ELearningPlatform.Data
         public CoursesData(ELearningPlatformContext context)
         {
             _context = context;
-
-            if (_context.Course.Count() == 0)
-            {
-                // Create a new User if collection is empty,
-                // which means you can't delete all users.
-                _context.Course.AddRange(new Course { Name = "Test", Desc = "Test course", CreationDate = DateTime.Now, Ico = "./img/Ico/16.jpg", IdInstructor = 11, IdSubject = 1 }, new Course { Name = "Test2", Desc = "Test course", CreationDate = DateTime.Now, Ico = "./img/Ico/16.jpg", IdInstructor = 11, IdSubject = 1 }, new Course { Name = "Test3", Desc = "Test course", CreationDate = DateTime.Now, Ico = "./img/Ico/16.jpg", IdInstructor = 11, IdSubject = 1 });    
-            }
-            if(_context.Inscription.Count() == 0)
-            {
-                _context.Inscription.Add(new Inscription { IdCourse = 8, IdUser = 11 });
-            }
-            _context.SaveChanges();
         }
 
         public List<Course> GetAllCourses()
@@ -42,7 +30,7 @@ namespace ELearningPlatform.Data
             return Courses;
         }
 
-        public List<int> GetSubscribedCourseId(int IdUser)
+        public List<int> GetSubscribedCourseId(string IdUser)
         {
             List<Inscription> inscriptions = _context.Inscription.Where(e=> e.IdUser == IdUser).ToList();
             List<int> coursesId = new List<int>();
@@ -92,7 +80,7 @@ namespace ELearningPlatform.Data
             return _context.Module.Where(e => e.IdCourse == Id).Count();
         }
 
-        public bool isEnrolled(int IdCourse, int IdUser)
+        public bool isEnrolled(int IdCourse, string IdUser)
         {
             return (_context.Inscription.Where(e => e.IdCourse == IdCourse && e.IdUser == IdUser).Count() > 0);
         }

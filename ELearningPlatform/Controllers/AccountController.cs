@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Http;
 using System.Text;
 using EmailService;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ELearningPlatform.Controllers
 {
@@ -34,7 +35,7 @@ namespace ELearningPlatform.Controllers
             _context = context;
             this.userManager = userManager;
             this.signInManager = signInManager;
-            usersData = new UsersData(_context);
+            usersData = new UsersData(_context, userManager);
             _emailSender = new EmailSender(emailConfiguration);
             
             
@@ -45,15 +46,6 @@ namespace ELearningPlatform.Controllers
                 _context.User.Add(new User { Email = "loicburnand@gmail.com", IsConfirmed = true, IdCode = 3 });
                 _context.SaveChanges();
             }
-            usersData.GetAllUser();
-        }
-
-        [HttpGet("{id=0}")]
-        public async Task<IActionResult> GetUser(int id)
-        {
-            usersData.GetAllUser();
-
-            return NoContent();
         }
 
         // PUT: api/Users/5
@@ -87,9 +79,17 @@ namespace ELearningPlatform.Controllers
 
             return NoContent();
         }
+        [Route("Login")]
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult LoginUser()
+        {
+            return View("Login");
+        }
 
         [Route("Login")]
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> LoginUser([FromForm] string Username, [FromForm] string Password)
         {
             if (Username == null || Password == null)
@@ -127,6 +127,7 @@ namespace ELearningPlatform.Controllers
 
         [Route("SignUp")]
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> SignUpUser(string Email, string Username, string Password)
         {
             User newUser = new User();
@@ -156,6 +157,7 @@ namespace ELearningPlatform.Controllers
 
         [Route("Activate")]
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> ActivateUser(string Code)
         {
             User user;
@@ -178,6 +180,7 @@ namespace ELearningPlatform.Controllers
 
         [Route("ForgotPassword")]
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult ForgotPasswordUser(string Email)
         {
             if(Email != null)
@@ -197,6 +200,7 @@ namespace ELearningPlatform.Controllers
 
         [Route("ResetPassword")]
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult ResetPasswordUser(string Id, string newPassword)
         {
             try
@@ -217,6 +221,7 @@ namespace ELearningPlatform.Controllers
 
         [Route("ResendEmail")]
         [HttpGet]
+        [AllowAnonymous]
         public IActionResult ResendEmailUser(string Email)
         {
             if(Email != null)

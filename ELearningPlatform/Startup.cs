@@ -15,6 +15,8 @@ using Microsoft.AspNetCore.Mvc.Razor;
 using Microsoft.AspNetCore.Http;
 using EmailService;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Authorization;
 
 namespace ELearningPlatform
 {
@@ -43,7 +45,10 @@ namespace ELearningPlatform
             services.AddSession();
             services.AddControllersWithViews();
 
-            services.AddMvc();
+            services.AddMvc(options => {
+                var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+                options.Filters.Add(new AuthorizeFilter(policy));
+            });
 
 
             services.AddDbContext<ELearningPlatformContext>(options =>
